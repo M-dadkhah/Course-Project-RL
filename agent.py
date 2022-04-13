@@ -97,7 +97,7 @@ class Agent(object):
 		self.timestep = 0
     
 	
-	def load_weights(self):
+	def load_weights(self, root_path):
 		pass
 	
 	def act(self, curr_obs, mode='eval'):
