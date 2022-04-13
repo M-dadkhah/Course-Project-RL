@@ -148,13 +148,13 @@ class Agent(object):
 			for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
 				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
 
-			if (timestep + 1) % 1000 == 0:		
-				file_name = f"./GROUP_030/"
-				# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
-				# print(self.outputs)
-				# np.save(file_name + 'outputs', self.outputs)    
-				torch.save(self.critic.state_dict(), file_name + "_critic")
-				torch.save(self.critic_optimizer.state_dict(), file_name + "_critic_optimizer")
+# 			if (timestep + 1) % 1000 == 0:		
+# 				file_name = f"./GROUP_030/"
+# 				# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
+# 				# print(self.outputs)
+# 				# np.save(file_name + 'outputs', self.outputs)    
+# 				torch.save(self.critic.state_dict(), file_name + "_critic")
+# 				torch.save(self.critic_optimizer.state_dict(), file_name + "_critic_optimizer")
 				
-				torch.save(self.actor.state_dict(), file_name + "_actor")
-				torch.save(self.actor_optimizer.state_dict(), file_name + "_actor_optimizer")
+# 				torch.save(self.actor.state_dict(), file_name + "_actor")
+# 				torch.save(self.actor_optimizer.state_dict(), file_name + "_actor_optimizer")
