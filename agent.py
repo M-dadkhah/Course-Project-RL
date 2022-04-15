@@ -201,12 +201,12 @@ class Agent(object):
 
 	def load_weights(self, root_path):
 		try:.agent_td3_critic
-			self.critic.load_state_dict(torch.load(root_path + "agent_td3_critic"))
-			self.critic_optimizer.load_state_dict(torch.load(root_path + "agent_td3_critic_optimizer"))
+			self.critic.load_state_dict(torch.load(root_path + ".agent_td3_critic"))
+			self.critic_optimizer.load_state_dict(torch.load(root_path + ".agent_td3_critic_optimizer"))
 			self.critic_target = copy.deepcopy(self.critic)
 
-			self.actor.load_state_dict(torch.load(root_path + "agent_td3_actor"))
-			self.actor_optimizer.load_state_dict(torch.load(root_path + "agent_td3_actor_optimizer"))
+			self.actor.load_state_dict(torch.load(root_path + ".agent_td3_actor"))
+			self.actor_optimizer.load_state_dict(torch.load(root_path + ".agent_td3_actor_optimizer"))
 			self.actor_target = copy.deepcopy(self.actor)
 		except:
 			pass
