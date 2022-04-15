@@ -200,7 +200,7 @@ class Agent(object):
 		torch.save(self.actor_optimizer.state_dict(), root_path + "_actor_optimizer")
 
 	def load_weights(self, root_path):
-		try:.agent_td3_critic
+		try:
 			self.critic.load_state_dict(torch.load(root_path + ".agent_td3_critic"))
 			self.critic_optimizer.load_state_dict(torch.load(root_path + ".agent_td3_critic_optimizer"))
 			self.critic_target = copy.deepcopy(self.critic)
