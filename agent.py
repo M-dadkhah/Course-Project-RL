@@ -6,7 +6,7 @@ import numpy as np
 
 device = torch.device("cuda:0")
 class ReplayBuffer(object):
-	def __init__(self, state_dim, action_dim, max_size=int(1e6)):
+	def __init__(self, state_dim, action_dim, max_size=int(1e5)):
 		self.max_size = max_size
 		self.ptr = 0
 		self.size = 0
@@ -40,6 +40,8 @@ class ReplayBuffer(object):
 			torch.FloatTensor(self.next_obs[ind]).to(self.device),
 			torch.FloatTensor(self.done[ind]).to(self.device)
 		)
+
+
 class Actor(nn.Module):
 	def __init__(self, env_specs, neurons=100):
 		super(Actor, self).__init__()
@@ -55,18 +57,39 @@ class Actor(nn.Module):
 
 
 class Critic(nn.Module):
-	def __init__(self, env_specs, neurons=100):
+	def __init__(self, env_specs, neurons=256):
 		super(Critic, self).__init__()
 
-		self.l1 = nn.Linear(env_specs['observation_space'].shape[0], neurons)
-		self.l2 = nn.Linear(neurons + env_specs['action_space'].shape[0], neurons)
+		self.l1 = nn.Linear(env_specs['observation_space'].shape[0] + \
+            env_specs['action_space'].shape[0], neurons)
+		self.l2 = nn.Linear(neurons , neurons)
 		self.l3 = nn.Linear(neurons, 1)
 
-	def forward(self, state, action):
-		q = F.relu(self.l1(state))
-		q = F.relu(self.l2(torch.cat([q, action], 1)))
-		return self.l3(q)
+		self.l4 = nn.Linear(env_specs['observation_space'].shape[0] + \
+            env_specs['action_space'].shape[0], neurons)
+		self.l5 = nn.Linear(neurons , neurons)
+		self.l6 = nn.Linear(neurons, 1)
 
+	def forward(self, state, action):
+		sa = torch.cat([state, action], 1)
+		q1 = F.relu(self.l1(sa))
+		q1 = F.relu(self.l2(q1))
+		q1 = self.l3(q1)
+
+		q2 = F.relu(self.l4(sa))
+		q2 = F.relu(self.l5(q2))
+		q2 = self.l6(q2)
+
+		
+		return q1, q2
+
+	def Q1(self, state, action):
+		sa = torch.cat([state, action], 1)
+
+		q1 = F.relu(self.l1(sa))
+		q1 = F.relu(self.l2(q1))
+		q1 = self.l3(q1)
+		return q1
 
 class Agent(object):
 	'''The agent class that is to be filled.
@@ -74,7 +97,17 @@ class Agent(object):
 		want to this class.
 	'''
 
-	def __init__(self, env_specs, discount=0.99, tau=0.005, expl_noise=0.1):
+	def __init__(
+		self, 
+		env_specs, 
+		discount=0.99, 
+		tau=0.005, 
+		expl_noise=0.1, 
+		policy_noise=0.2,
+		noise_clip=0.5,
+		policy_freq=2
+		):
+
 		super(Agent, self).__init__()
 		self.env_specs = env_specs 
 		self.obs_space = env_specs['observation_space']
@@ -95,46 +128,52 @@ class Agent(object):
 		self.start_timesteps = 25e3
 		self.outputs = []
 		self.timestep = 0
-    
-	
-	def load_weights(self, root_path):
-		pass
+		self.policy_noise = policy_noise
+		self.noise_clip = noise_clip
+		self.policy_freq = policy_freq
+		self.total_it = 0
+		self.max_action = float(env_specs['action_space'].high[0])
+
+		
 	
 	def act(self, curr_obs, mode='eval'):
-		if self.timestep<self.start_timesteps:
-			return self.act_space.sample()
-		else:
-			curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
-			if mode=='train':
-				return (self.actor(curr_obs).cpu().data.numpy().flatten() \
-					+ np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
-					).clip(-1, 1)
-			elif mode=='eval':
-				return (self.actor(curr_obs).cpu().data.numpy().flatten()
-					).clip(-1, 1)
+		
+		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
+		return self.actor(curr_obs).cpu().data.numpy().flatten()
+			
 		
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=256):
+		self.total_it += 1
 		self.timestep = timestep
 		self.replay_buffer.add(curr_obs, action, reward, next_obs, done)
-		if timestep>= self.start_timesteps:
-			_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size)
+		_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size)
 
-			target_Q = self.critic_target(_next_obs, self.actor_target(_next_obs))
-			target_Q = _reward + ((1-_done) * self.discount * target_Q).detach()
+		with torch.no_grad():
+			# Select action according to policy and add clipped noise
+			noise = (
+				torch.randn_like(_action) * self.policy_noise
+			).clamp(-self.noise_clip, self.noise_clip)
+			
+			next_action = (
+				self.actor_target(_next_obs) + noise
+			).clamp(-self.max_action, self.max_action)
 
-			# Get current Q estimate
-			current_Q = self.critic(_curr_obs, _action)
+			# Compute the target Q value
+			target_Q1, target_Q2 = self.critic_target(_next_obs, next_action)
+			target_Q = torch.min(target_Q1, target_Q2)
+			target_Q = _reward + (1-_done) * self.discount * target_Q
 
-			# Compute critic loss
-			critic_loss = F.mse_loss(current_Q, target_Q)
+		current_Q1, current_Q2 = self.critic(_curr_obs, _action)
+		critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
 
-			# Optimize the critic
-			self.critic_optimizer.zero_grad()
-			critic_loss.backward()
-			self.critic_optimizer.step()
+		self.critic_optimizer.zero_grad()
+		critic_loss.backward()
+		self.critic_optimizer.step()
 
-			# Compute actor loss
-			actor_loss = -self.critic(_curr_obs, self.actor(_curr_obs)).mean()
+		if self.total_it % self.policy_freq == 0:
+
+			# Compute actor losse
+			actor_loss = -self.critic.Q1(_curr_obs, self.actor(_curr_obs)).mean()
 			
 			# Optimize the actor 
 			self.actor_optimizer.zero_grad()
@@ -147,14 +186,27 @@ class Agent(object):
 
 			for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
 				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+	
 
-# 			if (timestep + 1) % 1000 == 0:		
-# 				file_name = f"./GROUP_030/"
-# 				# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
-# 				# print(self.outputs)
-# 				# np.save(file_name + 'outputs', self.outputs)    
-# 				torch.save(self.critic.state_dict(), file_name + "_critic")
-# 				torch.save(self.critic_optimizer.state_dict(), file_name + "_critic_optimizer")
-				
-# 				torch.save(self.actor.state_dict(), file_name + "_actor")
-# 				torch.save(self.actor_optimizer.state_dict(), file_name + "_actor_optimizer")
+
+	def save(self, root_path):		
+		# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
+		# print(self.outputs)
+		# np.save(file_name + 'outputs', self.outputs)    
+		torch.save(self.critic.state_dict(), root_path + "_critic")
+		torch.save(self.critic_optimizer.state_dict(), root_path + "_critic_optimizer")
+		
+		torch.save(self.actor.state_dict(), root_path + "_actor")
+		torch.save(self.actor_optimizer.state_dict(), root_path + "_actor_optimizer")
+
+	def load_weights(self, root_path):
+		try:
+			self.critic.load_state_dict(torch.load(root_path + "_critic"))
+			self.critic_optimizer.load_state_dict(torch.load(root_path + "_critic_optimizer"))
+			self.critic_target = copy.deepcopy(self.critic)
+
+			self.actor.load_state_dict(torch.load(root_path + "_actor"))
+			self.actor_optimizer.load_state_dict(torch.load(root_path + "_actor_optimizer"))
+			self.actor_target = copy.deepcopy(self.actor)
+		except:
+			pass
