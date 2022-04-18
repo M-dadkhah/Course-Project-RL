@@ -1,0 +1,240 @@
+
+
+ .agent_twoact 
+
+
+
+ .agent_twoact 
+
+timestep: 1000, acc_reward: -1.56
+timestep: 2000, acc_reward: -1.51
+timestep: 3000, acc_reward: 46.87
+timestep: 4000, acc_reward: 137.50
+timestep: 5000, acc_reward: 141.02
+timestep: 6000, acc_reward: 139.00
+timestep: 7000, acc_reward: 132.47
+timestep: 8000, acc_reward: 128.04
+timestep: 9000, acc_reward: 141.73
+timestep: 10000, acc_reward: 134.23
+timestep: 11000, acc_reward: 139.02
+timestep: 12000, acc_reward: 138.67
+timestep: 13000, acc_reward: 136.50
+timestep: 14000, acc_reward: 140.38
+timestep: 15000, acc_reward: 128.20
+
+
+ .agent_twoact 
+
+timestep: 1000, acc_reward: 131.51
+timestep: 2000, acc_reward: 133.47
+timestep: 3000, acc_reward: 131.25
+timestep: 4000, acc_reward: 133.15
+timestep: 5000, acc_reward: 135.44
+timestep: 6000, acc_reward: 121.30
+timestep: 7000, acc_reward: 130.53
+timestep: 8000, acc_reward: 127.65
+timestep: 9000, acc_reward: 120.01
+timestep: 10000, acc_reward: 54.85
+timestep: 11000, acc_reward: 131.86
+timestep: 12000, acc_reward: 124.49
+timestep: 13000, acc_reward: 131.29
+timestep: 14000, acc_reward: 130.29
+timestep: 15000, acc_reward: 131.07
+timestep: 16000, acc_reward: 133.24
+timestep: 17000, acc_reward: 134.13
+timestep: 18000, acc_reward: 122.58
+timestep: 19000, acc_reward: 130.54
+timestep: 20000, acc_reward: 128.83
+timestep: 21000, acc_reward: 126.72
+timestep: 22000, acc_reward: 129.80
+timestep: 23000, acc_reward: 128.37
+timestep: 24000, acc_reward: 131.22
+timestep: 25000, acc_reward: 125.29
+timestep: 26000, acc_reward: 118.48
+timestep: 27000, acc_reward: 5.81
+timestep: 28000, acc_reward: 84.34
+timestep: 29000, acc_reward: 103.96
+timestep: 30000, acc_reward: 122.93
+timestep: 31000, acc_reward: 116.73
+timestep: 32000, acc_reward: 118.82
+timestep: 33000, acc_reward: 124.61
+timestep: 34000, acc_reward: 125.72
+timestep: 35000, acc_reward: 125.63
+timestep: 36000, acc_reward: 124.65
+timestep: 37000, acc_reward: 119.70
+timestep: 38000, acc_reward: 126.91
+timestep: 39000, acc_reward: 113.49
+timestep: 40000, acc_reward: 107.58
+timestep: 41000, acc_reward: 113.78
+timestep: 42000, acc_reward: 120.40
+timestep: 43000, acc_reward: 128.98
+timestep: 44000, acc_reward: 129.99
+timestep: 45000, acc_reward: 129.58
+timestep: 46000, acc_reward: 121.29
+timestep: 47000, acc_reward: 135.25
+timestep: 48000, acc_reward: 128.12
+timestep: 49000, acc_reward: 185.72
+timestep: 50000, acc_reward: 195.54
+timestep: 51000, acc_reward: 190.79
+timestep: 52000, acc_reward: 166.28
+timestep: 53000, acc_reward: 191.33
+timestep: 54000, acc_reward: 196.43
+timestep: 55000, acc_reward: 158.02
+timestep: 56000, acc_reward: 199.62
+timestep: 57000, acc_reward: 160.73
+timestep: 58000, acc_reward: 197.14
+timestep: 59000, acc_reward: 194.67
+timestep: 60000, acc_reward: 190.20
+timestep: 61000, acc_reward: 193.11
+timestep: 62000, acc_reward: 193.01
+timestep: 63000, acc_reward: 193.92
+timestep: 64000, acc_reward: 199.64
+timestep: 65000, acc_reward: 199.20
+timestep: 66000, acc_reward: 200.62
+timestep: 67000, acc_reward: 199.53
+timestep: 68000, acc_reward: 200.81
+timestep: 69000, acc_reward: 91.48
+timestep: 70000, acc_reward: 85.03
+timestep: 71000, acc_reward: 192.07
+timestep: 72000, acc_reward: 195.80
+timestep: 73000, acc_reward: 195.14
+timestep: 74000, acc_reward: 195.18
+timestep: 75000, acc_reward: 152.18
+timestep: 76000, acc_reward: 197.02
+timestep: 77000, acc_reward: 197.17
+timestep: 78000, acc_reward: 189.49
+timestep: 79000, acc_reward: 184.71
+timestep: 80000, acc_reward: 183.77
+timestep: 81000, acc_reward: 176.73
+timestep: 82000, acc_reward: 174.40
+timestep: 83000, acc_reward: 171.06
+timestep: 84000, acc_reward: 183.73
+timestep: 85000, acc_reward: 196.82
+timestep: 86000, acc_reward: 183.83
+timestep: 87000, acc_reward: 189.20
+timestep: 88000, acc_reward: 192.76
+timestep: 89000, acc_reward: 190.06
+timestep: 90000, acc_reward: 188.41
+timestep: 91000, acc_reward: 183.03
+timestep: 92000, acc_reward: 186.04
+timestep: 93000, acc_reward: 187.77
+timestep: 94000, acc_reward: 180.11
+timestep: 95000, acc_reward: 185.45
+timestep: 96000, acc_reward: 184.97
+timestep: 97000, acc_reward: 185.20
+timestep: 98000, acc_reward: 186.18
+timestep: 99000, acc_reward: 109.02
+timestep: 100000, acc_reward: 192.58
+timestep: 101000, acc_reward: 171.47
+timestep: 102000, acc_reward: 191.47
+timestep: 103000, acc_reward: 178.86
+timestep: 104000, acc_reward: 172.49
+timestep: 105000, acc_reward: 189.88
+timestep: 106000, acc_reward: 197.91
+timestep: 107000, acc_reward: 194.41
+timestep: 108000, acc_reward: 185.99
+timestep: 109000, acc_reward: 183.99
+timestep: 110000, acc_reward: 186.51
+timestep: 111000, acc_reward: 186.27
+timestep: 112000, acc_reward: 189.82
+timestep: 113000, acc_reward: 190.70
+timestep: 114000, acc_reward: 189.66
+timestep: 115000, acc_reward: 187.43
+timestep: 116000, acc_reward: 187.86
+timestep: 117000, acc_reward: 189.19
+timestep: 118000, acc_reward: 188.13
+timestep: 119000, acc_reward: 189.04
+timestep: 120000, acc_reward: 193.77
+timestep: 121000, acc_reward: 191.14
+timestep: 122000, acc_reward: 192.41
+timestep: 123000, acc_reward: 199.34
+timestep: 124000, acc_reward: 199.19
+timestep: 125000, acc_reward: 194.20
+timestep: 126000, acc_reward: 189.65
+timestep: 127000, acc_reward: 188.68
+timestep: 128000, acc_reward: 193.93
+timestep: 129000, acc_reward: 192.59
+timestep: 130000, acc_reward: 199.48
+timestep: 131000, acc_reward: 201.03
+timestep: 132000, acc_reward: 201.70
+timestep: 133000, acc_reward: 203.65
+timestep: 134000, acc_reward: 204.98
+timestep: 135000, acc_reward: 206.35
+timestep: 136000, acc_reward: 207.41
+timestep: 137000, acc_reward: 168.71
+timestep: 138000, acc_reward: 204.32
+timestep: 139000, acc_reward: 208.42
+timestep: 140000, acc_reward: 206.01
+timestep: 141000, acc_reward: 193.31
+timestep: 142000, acc_reward: 204.98
+timestep: 143000, acc_reward: 206.23
+timestep: 144000, acc_reward: 207.80
+timestep: 145000, acc_reward: 196.30
+timestep: 146000, acc_reward: 208.13
+timestep: 147000, acc_reward: 227.83
+timestep: 148000, acc_reward: 208.22
+timestep: 149000, acc_reward: 199.42
+timestep: 150000, acc_reward: 191.87
+timestep: 151000, acc_reward: 194.21
+timestep: 152000, acc_reward: 202.06
+timestep: 153000, acc_reward: 198.73
+timestep: 154000, acc_reward: 200.81
+timestep: 155000, acc_reward: 199.06
+timestep: 156000, acc_reward: 203.23
+timestep: 157000, acc_reward: 200.43
+timestep: 158000, acc_reward: 198.08
+timestep: 159000, acc_reward: 198.59
+timestep: 160000, acc_reward: 206.36
+timestep: 161000, acc_reward: 200.00
+timestep: 162000, acc_reward: 203.90
+timestep: 163000, acc_reward: 204.69
+timestep: 164000, acc_reward: 212.44
+timestep: 165000, acc_reward: 202.14
+timestep: 166000, acc_reward: 200.24
+timestep: 167000, acc_reward: 207.57
+timestep: 168000, acc_reward: 207.49
+timestep: 169000, acc_reward: 212.97
+timestep: 170000, acc_reward: 214.67
+timestep: 171000, acc_reward: 199.37
+timestep: 172000, acc_reward: 208.29
+timestep: 173000, acc_reward: 197.02
+timestep: 174000, acc_reward: 207.81
+timestep: 175000, acc_reward: 211.15
+timestep: 176000, acc_reward: 211.31
+timestep: 177000, acc_reward: 198.21
+timestep: 178000, acc_reward: 205.71
+timestep: 179000, acc_reward: 194.15
+timestep: 180000, acc_reward: 206.02
+timestep: 181000, acc_reward: 198.44
+timestep: 182000, acc_reward: 201.17
+timestep: 183000, acc_reward: 199.86
+timestep: 184000, acc_reward: 202.68
+timestep: 185000, acc_reward: 209.79
+timestep: 186000, acc_reward: 202.12
+timestep: 187000, acc_reward: 212.42
+timestep: 188000, acc_reward: 211.62
+timestep: 189000, acc_reward: 204.98
+timestep: 190000, acc_reward: 208.15
+timestep: 191000, acc_reward: 200.16
+timestep: 192000, acc_reward: 160.09
+timestep: 193000, acc_reward: 183.72
+timestep: 194000, acc_reward: 208.37
+timestep: 195000, acc_reward: 195.17
+timestep: 196000, acc_reward: 197.71
+timestep: 197000, acc_reward: 203.65
+timestep: 198000, acc_reward: 195.35
+timestep: 199000, acc_reward: 197.84
+timestep: 200000, acc_reward: 201.41
+
+
+ .agent_twoact 
+
+timestep: 1000, acc_reward: 226.44
+
+
+ .agent_twoact 
+
+
+
+ .agent_twoact 
+
