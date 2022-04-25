@@ -109,14 +109,18 @@ class Agent(object):
 
 		# print(np.prod(actions+1,axis=0)**(1/len(actions))-1)
 		# return np.prod(actions+1,axis=0)**(1/len(actions))-1
-		d=[]
-		size=4
-		for i in range(size):
-			for j in range(i+1,size):
-				d.append((i,j,sum((actions[i]-actions[j])**2)))
 
-		args = min(d,key = lambda x: x[2])
-		action = (actions[args[0]] + actions[args[1]])/2
+		size=4
+		d=np.zeros((size,3))
+		for i in range(size):
+			for j in range(size):
+				for k in range(3):
+					d[i,k] = d[i,k] + np.sum((actions[i][k]-actions[j][k])**2)
+
+		action = np.zeros_like(actions[0])
+		for k in range(3):
+			args = np.argsort(d[:,k])
+			action[k] = (actions[args[0],[k]] + actions[args[1],[k]])/2
 		return action
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
 		pass
