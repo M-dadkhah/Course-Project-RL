@@ -5,45 +5,15 @@ import torch.nn.functional as F
 import numpy as np
 
 device = torch.device("cuda:0")
-class ReplayBuffer(object):
-	def __init__(self, state_dim, action_dim, max_size=int(1e5)):
-		self.max_size = max_size
-		self.ptr = 0
-		self.size = 0
-
-		self.curr_obs = np.zeros((max_size, state_dim))
-		self.action = np.zeros((max_size, action_dim))
-		self.reward = np.zeros((max_size, 1))
-		self.next_obs = np.zeros((max_size, state_dim))
-		self.done = np.zeros((max_size, 1))
-
-		self.device = torch.device("cuda:0")
-
-	def add(self, curr_obs, action, reward, next_obs, done):
-		self.curr_obs[self.ptr] = curr_obs
-		self.action[self.ptr] = action
-		self.reward[self.ptr] = reward
-		self.next_obs[self.ptr] = next_obs
-		self.done[self.ptr] = float(done)
-
-		self.ptr = (self.ptr + 1) % self.max_size
-		self.size = min(self.size + 1, self.max_size)
-
-
-	def sample(self, batch_size):
-		ind = np.random.randint(0, self.size, size=batch_size)
-
-		return (
-			torch.FloatTensor(self.curr_obs[ind]).to(self.device),
-			torch.FloatTensor(self.action[ind]).to(self.device),
-			torch.FloatTensor(self.reward[ind]).to(self.device),
-			torch.FloatTensor(self.next_obs[ind]).to(self.device),
-			torch.FloatTensor(self.done[ind]).to(self.device)
-		)
 
 
 class Actor(nn.Module):
-	def __init__(self, env_specs, neurons=100):
+	'''
+	Actor agent,
+	input observations, output action
+	3 dense layes
+	'''
+	def __init__(self, env_specs, neurons=int(2**8)):
 		super(Actor, self).__init__()
 		self.l1 = nn.Linear(env_specs['observation_space'].shape[0], neurons)
 		self.l2 = nn.Linear(neurons, neurons)
@@ -57,7 +27,12 @@ class Actor(nn.Module):
 
 
 class Critic(nn.Module):
-	def __init__(self, env_specs, neurons=256):
+	'''
+	Critic agent,
+	inputs observations and actions, output w Q values for each critic agent.
+	Each network has 3 dense layers.
+	'''
+	def __init__(self, env_specs, neurons=int(2**8)):
 		super(Critic, self).__init__()
 
 		self.l1 = nn.Linear(env_specs['observation_space'].shape[0] + \
@@ -79,7 +54,6 @@ class Critic(nn.Module):
 		q2 = F.relu(self.l4(sa))
 		q2 = F.relu(self.l5(q2))
 		q2 = self.l6(q2)
-
 		
 		return q1, q2
 
@@ -102,7 +76,6 @@ class Agent(object):
 		env_specs, 
 		discount=0.99, 
 		tau=0.005, 
-		expl_noise=0.1, 
 		policy_noise=0.2,
 		noise_clip=0.5,
 		policy_freq=2
@@ -112,101 +85,54 @@ class Agent(object):
 		self.env_specs = env_specs 
 		self.obs_space = env_specs['observation_space']
 		self.act_space = env_specs['action_space']
-		self.expl_noise = expl_noise
-		self.replay_buffer = ReplayBuffer(self.obs_space.shape[0], self.act_space.shape[0])
 
-		self.actor = Actor(env_specs).to(device)
-		self.actor_target = copy.deepcopy(self.actor)
-		self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-4)
+		self.actors = [Actor(env_specs).to(device) for _ in range(4)]
 
-		self.critic = Critic(env_specs).to(device)
-		self.critic_target = copy.deepcopy(self.critic)
-		self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), weight_decay=3e-4)
+		self.critics = [Critic(env_specs).to(device) for _ in range(4)]
     
 		self.discount = discount
 		self.tau = tau
-		self.start_timesteps = 25e3
+		self.start_timesteps = 0
 		self.outputs = []
 		self.timestep = 0
 		self.policy_noise = policy_noise
 		self.noise_clip = noise_clip
 		self.policy_freq = policy_freq
-		self.total_it = 0
 		self.max_action = float(env_specs['action_space'].high[0])
-
+		self.start_timesteps = int(5e3)
 		
 	
 	def act(self, curr_obs, mode='eval'):
-		
 		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
-		return self.actor(curr_obs).cpu().data.numpy().flatten()
-			
-		
-	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=256):
-		self.total_it += 1
-		self.timestep = timestep
-		self.replay_buffer.add(curr_obs, action, reward, next_obs, done)
-		_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size)
+		actions = np.array([actor(curr_obs).cpu().data.numpy().flatten() for actor in self.actors])
+		# print(actions+1)
 
-		with torch.no_grad():
-			# Select action according to policy and add clipped noise
-			noise = (
-				torch.randn_like(_action) * self.policy_noise
-			).clamp(-self.noise_clip, self.noise_clip)
-			
-			next_action = (
-				self.actor_target(_next_obs) + noise
-			).clamp(-self.max_action, self.max_action)
+		# print(np.prod(actions+1,axis=0)**(1/len(actions))-1)
+		# return np.prod(actions+1,axis=0)**(1/len(actions))-1
+		d=[]
+		size=4
+		for i in range(size):
+			for j in range(i+1,size):
+				d.append((i,j,sum((actions[i]-actions[j])**2)))
 
-			# Compute the target Q value
-			target_Q1, target_Q2 = self.critic_target(_next_obs, next_action)
-			target_Q = torch.min(target_Q1, target_Q2)
-			target_Q = _reward + (1-_done) * self.discount * target_Q
-
-		current_Q1, current_Q2 = self.critic(_curr_obs, _action)
-		critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
-
-		self.critic_optimizer.zero_grad()
-		critic_loss.backward()
-		self.critic_optimizer.step()
-
-		if self.total_it % self.policy_freq == 0:
-
-			# Compute actor losse
-			actor_loss = -self.critic.Q1(_curr_obs, self.actor(_curr_obs)).mean()
-			
-			# Optimize the actor 
-			self.actor_optimizer.zero_grad()
-			actor_loss.backward()
-			self.actor_optimizer.step()
-
-			# Update the frozen target models
-			for param, target_param in zip(self.critic.parameters(), self.critic_target.parameters()):
-				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
-
-			for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
-				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+		args = min(d,key = lambda x: x[2])
+		action = (actions[args[0]] + actions[args[1]])/2
+		return action
+	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
+		pass
 	
 
 
 	def save(self, root_path):		
-		# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
-		# print(self.outputs)
-		# np.save(file_name + 'outputs', self.outputs)    
-		torch.save(self.critic.state_dict(), root_path + "_critic")
-		torch.save(self.critic_optimizer.state_dict(), root_path + "_critic_optimizer")
-		
-		torch.save(self.actor.state_dict(), root_path + "_actor")
-		torch.save(self.actor_optimizer.state_dict(), root_path + "_actor_optimizer")
+		pass
+
 
 	def load_weights(self, root_path):
 		try:
-			self.critic.load_state_dict(torch.load(root_path + ".agent_td3_critic"))
-			self.critic_optimizer.load_state_dict(torch.load(root_path + ".agent_td3_critic_optimizer"))
-			self.critic_target = copy.deepcopy(self.critic)
-
-			self.actor.load_state_dict(torch.load(root_path + ".agent_td3_actor"))
-			self.actor_optimizer.load_state_dict(torch.load(root_path + ".agent_td3_actor_optimizer"))
-			self.actor_target = copy.deepcopy(self.actor)
+			for i in range(4):
+				self.critics[i].load_state_dict(torch.load(root_path + f'runs/seed_{i}/W' + "_critic"))
+				
+				# self.actor.load_state_dict(torch.load(root_path + "_actor"))
+				self.actors[i].load_state_dict(torch.load(root_path + f'runs/seed_{i}/W' + "_actor"))
 		except:
 			pass
