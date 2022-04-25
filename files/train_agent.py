@@ -45,7 +45,7 @@ def get_gpu_memory_map():
 
 
 
-def evaluate_agent(agent, env, n_episodes_to_evaluate):
+def evaluate_agent(agent, env, n_episodes_to_evaluate, video_recorder, show_graphics):
   '''Evaluates the agent for a provided number of episodes.'''
   array_of_acc_rewards = []
   for _ in range(n_episodes_to_evaluate):
@@ -56,6 +56,9 @@ def evaluate_agent(agent, env, n_episodes_to_evaluate):
       action = agent.act(curr_obs, mode='eval')
       # print(action)
       next_obs, reward, done, _ = env.step(action)
+      if show_graphics:
+        env.render()
+      # video_recorder.capture_frame()
       acc_reward += reward
       curr_obs = next_obs
     array_of_acc_rewards.append(acc_reward)
@@ -79,7 +82,8 @@ def train_agent(agent,
                 total_timesteps,
                 evaluation_freq,
                 n_episodes_to_evaluate,
-                agentFile):
+                agentFile,
+                show_graphics):
 
   f = open(agentFile+'.log', 'a')
   f.write(f'\n\n {agentFile} \n\n')
@@ -96,6 +100,9 @@ def train_agent(agent,
   torch.backends.cudnn.deterministic = True
   torch.backends.cudnn.benchmark = False 
   # system("cls") # Windows
+  
+  enable_recorder = False
+  video_recorder = gym.wrappers.monitoring.video_recorder.VideoRecorder(env, f"./GROUP_030/{agentFile}.mp4", enabled=show_graphics and enable_recorder)
 
   timestep = 0
   array_of_mean_acc_rewards = []
@@ -109,11 +116,14 @@ def train_agent(agent,
       next_obs, reward, done, _ = env.step(action)
       agent.update(curr_obs, action, reward, next_obs, done, timestep)
       curr_obs = next_obs
-        
+
+      if show_graphics:
+        env.render()
+      video_recorder.capture_frame()
       timestep += 1
       if timestep % evaluation_freq == 0:
         # if timestep>=25e3:
-          mean_acc_rewards = evaluate_agent(agent, env_eval, n_episodes_to_evaluate)
+          mean_acc_rewards = evaluate_agent(agent, env_eval, n_episodes_to_evaluate, video_recorder, show_graphics)
           print(f'timestep: {timestep}, acc_reward: {mean_acc_rewards:.2f}')
           f.write(f'{timestep}, {mean_acc_rewards:.2f}\n')
           array_of_mean_acc_rewards.append(mean_acc_rewards)
@@ -123,6 +133,8 @@ def train_agent(agent,
             max_acc_rewards = mean_acc_rewards
         # else:
         #   print(timestep)
+  
+  video_recorder.close()
   torch.cuda.empty_cache()
   return array_of_mean_acc_rewards
 
@@ -132,6 +144,7 @@ if __name__ == '__main__':
   parser = argparse.ArgumentParser(description='')
   parser.add_argument('--group', type=str, default='GROUP_030', help='group directory')
   parser.add_argument('--agentFile', type=str, default='.agent', help='agent file')
+  parser.add_argument('--showGraphics', action='store_true', help='should the simulation be rendered?')
   args = parser.parse_args()
 
   path = './'+args.group+'/'
@@ -158,6 +171,5 @@ if __name__ == '__main__':
   evaluation_freq = 1000
   n_episodes_to_evaluate = 20
 
-  learning_curve = train_agent(agent, env, env_eval, total_timesteps, evaluation_freq, n_episodes_to_evaluate, args.agentFile)
   learning_curve = train_agent(agent, env, env_eval, total_timesteps, evaluation_freq, n_episodes_to_evaluate, args.agentFile, args.showGraphics)
 
