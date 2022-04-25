@@ -83,6 +83,7 @@ def train_agent(agent,
 
   f = open(agentFile+'.log', 'a')
   f.write(f'\n\n {agentFile} \n\n')
+  f.write(f'timestep, acc_reward\n')
   agent.load_weights(f"./GROUP_030/"+agentFile)
   seed = 0
   random.seed(seed)
@@ -114,7 +115,7 @@ def train_agent(agent,
         # if timestep>=25e3:
           mean_acc_rewards = evaluate_agent(agent, env_eval, n_episodes_to_evaluate)
           print(f'timestep: {timestep}, acc_reward: {mean_acc_rewards:.2f}')
-          f.write(f'timestep: {timestep}, acc_reward: {mean_acc_rewards:.2f}\n')
+          f.write(f'{timestep}, {mean_acc_rewards:.2f}\n')
           array_of_mean_acc_rewards.append(mean_acc_rewards)
           # print(get_gpu_memory_map())
           if max_acc_rewards<mean_acc_rewards:
@@ -158,4 +159,5 @@ if __name__ == '__main__':
   n_episodes_to_evaluate = 20
 
   learning_curve = train_agent(agent, env, env_eval, total_timesteps, evaluation_freq, n_episodes_to_evaluate, args.agentFile)
+  learning_curve = train_agent(agent, env, env_eval, total_timesteps, evaluation_freq, n_episodes_to_evaluate, args.agentFile, args.showGraphics)
 
