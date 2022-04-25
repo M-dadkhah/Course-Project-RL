@@ -1,0 +1,24 @@
+
+
+ td3Anim _ seed: 0 
+
+timestep: 1000, acc_reward: 38.89
+timestep: 2000, acc_reward: 38.80
+
+
+ td3Anim _ seed: 0 
+
+timestep: 1000, acc_reward: 38.27
+timestep: 2000, acc_reward: 56.90
+
+
+ td3Anim _ seed: 0 
+
+timestep: 1000, acc_reward: 151.54
+timestep: 2000, acc_reward: 161.00
+
+
+ td3Anim _ seed: 0 
+
+timestep: 1000, acc_reward: 149.41
+timestep: 2000, acc_reward: 166.59
