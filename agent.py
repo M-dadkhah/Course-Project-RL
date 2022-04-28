@@ -208,10 +208,6 @@ class Agent(object):
 			for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
 				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
 
-			if timestep % self.log_freq == 0:
-				with open(self.path + 'results_loss.log', 'a+') as f:
-					f.write(f'timestep: {timestep}, critic_loss: {critic_loss.cpu().data.numpy().flatten()[0]}, actor_loss {actor_loss.cpu().data.numpy().flatten()[0]}\n')
-	
 
 
 	def save(self, root_path):		
