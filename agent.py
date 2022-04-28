@@ -218,26 +218,27 @@ class Agent(object):
 		# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
 		# print(self.outputs)
 		# np.save(file_name + 'outputs', self.outputs)    
-		torch.save(self.critic.state_dict(), root_path + "runs/seed_1/W_actor_optimizer_critic")
-		torch.save(self.critic_optimizer.state_dict(), root_path + "runs/seed_1/W_actor_optimizer_critic_optimizer")
+		torch.save(self.critic.state_dict(), root_path + "runs/seed_0/W_critic")
+		torch.save(self.critic_optimizer.state_dict(), root_path + "runs/seed_0/W_critic_optimizer")
 		
-		torch.save(self.actor.state_dict(), root_path + "_actor")
-		torch.save(self.actor_optimizer.state_dict(), root_path + "runs/seed_1/W_actor_optimizer_actor_optimizer")
+		torch.save(self.actor.state_dict(), root_path + "runs/seed_0/W_actor")
+		torch.save(self.actor_optimizer.state_dict(), root_path + "runs/seed_0/W_actor_optimizer")
 
 	def load_weights(self, root_path):
 		self.path = root_path[:-1]
 		try:
-			self.critic.load_state_dict(torch.load(root_path + "runs/seed_1/W_critic"))
+			self.critic.load_state_dict(torch.load(root_path + "runs/seed_0/W_critic"))
 			# self.critic_optimizer.load_state_dict(torch.load(root_path + "_critic_optimizer"))
 			self.critic_target = copy.deepcopy(self.critic)
 			# self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=3e-3)
-			self.critic_optimizer.load_state_dict(torch.load(root_path + "runs/seed_1/W_critic_optimizer"))
+			self.critic_optimizer.load_state_dict(torch.load(root_path + "runs/seed_0/W_critic_optimizer"))
 			# self.critic_target = copy.deepcopy(self.critic)
 			
 			# self.actor.load_state_dict(torch.load(root_path + "_actor"))
-			self.actor.load_state_dict(torch.load(root_path + "runs/seed_1/W_actor"))
+			self.actor.load_state_dict(torch.load(root_path + "runs/seed_0/W_actor"))
 			# self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-3)
-			self.actor_optimizer.load_state_dict(torch.load(root_path + "runs/seed_1/W_actor_optimizer"))
+			self.actor_optimizer.load_state_dict(torch.load(root_path + "runs/seed_0/W_actor_optimizer"))
 			self.actor_target = copy.deepcopy(self.actor)
 		except:
 			pass
+		
