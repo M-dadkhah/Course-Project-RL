@@ -221,20 +221,16 @@ class Agent(object):
 		torch.save(self.actor_optimizer.state_dict(), root_path + "runs/seed_0/W_actor_optimizer")
 
 	def load_weights(self, root_path):
-		self.path = root_path[:-1]
-		try:
-			self.critic.load_state_dict(torch.load(root_path + "runs/seed_0/W_critic"))
-			# self.critic_optimizer.load_state_dict(torch.load(root_path + "_critic_optimizer"))
-			self.critic_target = copy.deepcopy(self.critic)
-			# self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=3e-3)
-			self.critic_optimizer.load_state_dict(torch.load(root_path + "runs/seed_0/W_critic_optimizer"))
-			# self.critic_target = copy.deepcopy(self.critic)
-			
-			# self.actor.load_state_dict(torch.load(root_path + "_actor"))
-			self.actor.load_state_dict(torch.load(root_path + "runs/seed_0/W_actor"))
-			# self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-3)
-			self.actor_optimizer.load_state_dict(torch.load(root_path + "runs/seed_0/W_actor_optimizer"))
-			self.actor_target = copy.deepcopy(self.actor)
-		except:
-			pass
+		self.critic.load_state_dict(torch.load(root_path + "runs/seed_0/W_critic"))
+		# self.critic_optimizer.load_state_dict(torch.load(root_path + "_critic_optimizer"))
+		self.critic_target = copy.deepcopy(self.critic)
+		# self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=3e-3)
+		self.critic_optimizer.load_state_dict(torch.load(root_path + "runs/seed_0/W_critic_optimizer"))
+		# self.critic_target = copy.deepcopy(self.critic)
+
+		# self.actor.load_state_dict(torch.load(root_path + "_actor"))
+		self.actor.load_state_dict(torch.load(root_path + "runs/seed_0/W_actor"))
+		# self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-3)
+		self.actor_optimizer.load_state_dict(torch.load(root_path + "runs/seed_0/W_actor_optimizer"))
+		self.actor_target = copy.deepcopy(self.actor)
 		
