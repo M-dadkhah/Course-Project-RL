@@ -5,6 +5,48 @@ import torch.nn.functional as F
 import numpy as np
 
 device = torch.device("cuda:0")
+class ReplayBuffer(object):
+	
+	'''
+	History of the environment and the policy
+	'''
+	def __init__(self, state_dim, action_dim, max_size=int(1e6)):
+		self.max_size = max_size
+		self.ptr  	  = 0
+		self.size     = 0
+
+		self.curr_obs = np.zeros((max_size, state_dim ))
+		self.action	  = np.zeros((max_size, action_dim))
+		self.reward   = np.zeros((max_size, 1         ))
+		self.next_obs = np.zeros((max_size, state_dim ))
+		self.done     = np.zeros((max_size, 1         ))
+
+		self.device   = torch.device("cuda:0")
+
+	def add(self, curr_obs, action, reward, next_obs, done):
+		self.curr_obs[self.ptr] = curr_obs
+		self.action[self.ptr]   = action
+		self.reward[self.ptr]   = reward
+		self.next_obs[self.ptr] = next_obs
+		self.done[self.ptr]     = float(done)
+
+		# if self.size >= self.max_size:
+		# self.ptr  = np.random.randint(self.max_size)
+		# else:
+		self.ptr  = (self.ptr + 1) % self.max_size
+		self.size = min(self.size + 1, self.max_size)
+
+
+	def sample(self, batch_size):
+		ind = np.random.randint(0, self.size, size=batch_size)
+
+		return (
+			torch.FloatTensor(self.curr_obs[ind]).to(self.device),
+			torch.FloatTensor(self.action[ind]  ).to(self.device),
+			torch.FloatTensor(self.reward[ind]  ).to(self.device),
+			torch.FloatTensor(self.next_obs[ind]).to(self.device),
+			torch.FloatTensor(self.done[ind]    ).to(self.device)
+		)
 
 
 class Actor(nn.Module):
@@ -85,10 +127,15 @@ class Agent(object):
 		self.env_specs = env_specs 
 		self.obs_space = env_specs['observation_space']
 		self.act_space = env_specs['action_space']
+		self.replay_buffer = ReplayBuffer(self.obs_space.shape[0], self.act_space.shape[0])
 
-		self.actors = [Actor(env_specs).to(device) for _ in range(4)]
+		self.actor = Actor(env_specs).to(device)
+		self.actor_target = copy.deepcopy(self.actor)
+		self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-4)
 
-		self.critics = [Critic(env_specs).to(device) for _ in range(4)]
+		self.critic = Critic(env_specs).to(device)
+		self.critic_target = copy.deepcopy(self.critic)
+		self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), weight_decay=3e-4)
     
 		self.discount = discount
 		self.tau = tau
@@ -100,43 +147,97 @@ class Agent(object):
 		self.policy_freq = policy_freq
 		self.max_action = float(env_specs['action_space'].high[0])
 		self.start_timesteps = int(5e3)
+		self.log_freq = int(1e3)
 		
 	
 	def act(self, curr_obs, mode='eval'):
+		if mode=='train' and self.timestep<self.start_timesteps:
+			return self.act_space.sample()
+			
 		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
-		actions = np.array([actor(curr_obs).cpu().data.numpy().flatten() for actor in self.actors])
-		# print(actions+1)
+		action = self.actor(curr_obs).cpu().data.numpy().flatten()
 
-		# print(np.prod(actions+1,axis=0)**(1/len(actions))-1)
-		# return np.prod(actions+1,axis=0)**(1/len(actions))-1
-
-		size=4
-		d=np.zeros((size,3))
-		for i in range(size):
-			for j in range(size):
-				for k in range(3):
-					d[i,k] = d[i,k] + np.sum((actions[i][k]-actions[j][k])**2)
-
-		action = np.zeros_like(actions[0])
-		for k in range(3):
-			args = np.argsort(d[:,k])
-			action[k] = (actions[args[0],[k]] + actions[args[1],[k]])/2
+		if mode=='train':
+			self.expl_noise = 0.2*(1-np.tanh(self.timestep/1.3e6))
+			action = (action \
+				+ np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
+				).clip(-1, 1)
 		return action
+		
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
-		pass
+		self.timestep = timestep
+		self.replay_buffer.add(curr_obs, action, reward, next_obs, done) # adding the observation to the buffer
+		_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size) # sampling the buffer
+
+		with torch.no_grad():
+			# Select action according to policy and add clipped noise
+			noise = (
+				torch.randn_like(_action) * self.policy_noise
+			).clamp(-self.noise_clip, self.noise_clip)
+			
+			next_action = (
+				self.actor_target(_next_obs) + noise
+			).clamp(-self.max_action, self.max_action)
+
+			# Compute the target Q value
+			target_Q1, target_Q2 = self.critic_target(_next_obs, next_action)
+			target_Q = torch.min(target_Q1, target_Q2)
+			target_Q = _reward + (1-_done) * self.discount * target_Q
+
+		current_Q1, current_Q2 = self.critic(_curr_obs, _action)
+		critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
+
+		self.critic_optimizer.zero_grad()
+		critic_loss.backward()
+		self.critic_optimizer.step()
+
+		if timestep % self.policy_freq == 0:
+
+			# Compute actor losse
+			actor_loss = -self.critic.Q1(_curr_obs, self.actor(_curr_obs)).mean()
+			
+			# Optimize the actor 
+			self.actor_optimizer.zero_grad()
+			actor_loss.backward()
+			self.actor_optimizer.step()
+
+			# Update the frozen target models
+			for param, target_param in zip(self.critic.parameters(), self.critic_target.parameters()):
+				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+
+			for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
+				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+
+			if timestep % self.log_freq == 0:
+				with open(self.path + 'results_loss.log', 'a+') as f:
+					f.write(f'timestep: {timestep}, critic_loss: {critic_loss.cpu().data.numpy().flatten()[0]}, actor_loss {actor_loss.cpu().data.numpy().flatten()[0]}\n')
 	
 
 
 	def save(self, root_path):		
-		pass
-
+		# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
+		# print(self.outputs)
+		# np.save(file_name + 'outputs', self.outputs)    
+		torch.save(self.critic.state_dict(), root_path + "runs/seed_1/W_actor_optimizer_critic")
+		torch.save(self.critic_optimizer.state_dict(), root_path + "runs/seed_1/W_actor_optimizer_critic_optimizer")
+		
+		torch.save(self.actor.state_dict(), root_path + "_actor")
+		torch.save(self.actor_optimizer.state_dict(), root_path + "runs/seed_1/W_actor_optimizer_actor_optimizer")
 
 	def load_weights(self, root_path):
+		self.path = root_path[:-1]
 		try:
-			for i in range(4):
-				self.critics[i].load_state_dict(torch.load(root_path + f'runs/seed_{i}/W' + "_critic"))
-				
-				# self.actor.load_state_dict(torch.load(root_path + "_actor"))
-				self.actors[i].load_state_dict(torch.load(root_path + f'runs/seed_{i}/W' + "_actor"))
+			self.critic.load_state_dict(torch.load(root_path + "runs/seed_1/W_critic"))
+			# self.critic_optimizer.load_state_dict(torch.load(root_path + "_critic_optimizer"))
+			self.critic_target = copy.deepcopy(self.critic)
+			# self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=3e-3)
+			self.critic_optimizer.load_state_dict(torch.load(root_path + "runs/seed_1/W_critic_optimizer"))
+			# self.critic_target = copy.deepcopy(self.critic)
+			
+			# self.actor.load_state_dict(torch.load(root_path + "_actor"))
+			self.actor.load_state_dict(torch.load(root_path + "runs/seed_1/W_actor"))
+			# self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-3)
+			self.actor_optimizer.load_state_dict(torch.load(root_path + "runs/seed_1/W_actor_optimizer"))
+			self.actor_target = copy.deepcopy(self.actor)
 		except:
 			pass
