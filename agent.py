@@ -151,17 +151,17 @@ class Agent(object):
 		
 	
 	def act(self, curr_obs, mode='eval'):
-		if mode=='train' and self.timestep<self.start_timesteps:
-			return self.act_space.sample()
+# 		if mode=='train' and self.timestep<self.start_timesteps:
+# 			return self.act_space.sample()
 			
 		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
 		action = self.actor(curr_obs).cpu().data.numpy().flatten()
 
-		if mode=='train':
-			self.expl_noise = 0.2*(1-np.tanh(self.timestep/1.3e6))
-			action = (action \
-				+ np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
-				).clip(-1, 1)
+# 		if mode=='train':
+# 			self.expl_noise = 0.2*(1-np.tanh(self.timestep/1.3e6))
+# 			action = (action \
+# 				+ np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
+# 				).clip(-1, 1)
 		return action
 		
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
