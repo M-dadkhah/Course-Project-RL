@@ -134,7 +134,7 @@ class Agent(object):
 		self.critic = Critic(env_specs).to(device)
 		self.critic_target = copy.deepcopy(self.critic)
 		self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), weight_decay=3e-4)
-		self.load_weights('GROUPS/GROUP_030/')
+# 		self.load_weights('GROUPS/GROUP_030/')
 		self.discount = discount
 		self.tau = tau
 		self.start_timesteps = 0
