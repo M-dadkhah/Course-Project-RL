@@ -31,9 +31,7 @@ class ReplayBuffer(object):
 		self.next_obs[self.ptr] = next_obs
 		self.done[self.ptr]     = float(done)
 
-		# if self.size >= self.max_size:
-		# self.ptr  = np.random.randint(self.max_size)
-		# else:
+		
 		self.ptr  = (self.ptr + 1) % self.max_size
 		self.size = min(self.size + 1, self.max_size)
 
@@ -152,17 +150,12 @@ class Agent(object):
 		
 	
 	def act(self, curr_obs, mode='eval'):
-# 		if mode=='train' and self.timestep<self.start_timesteps:
-# 			return self.act_space.sample()
+
 			
 		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
 		action = self.actor(curr_obs).cpu().data.numpy().flatten()
 
-# 		if mode=='train':
-# 			self.expl_noise = 0.2*(1-np.tanh(self.timestep/1.3e6))
-# 			action = (action \
-# 				+ np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
-# 				).clip(-1, 1)
+
 		return action
 		
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
@@ -212,9 +205,7 @@ class Agent(object):
 
 
 	def save(self, root_path):		
-		# self.outputs.append([[_curr_obs.cpu(), _action.cpu(), _reward.cpu(), _next_obs.cpu(), _done.cpu()]])
-		# print(self.outputs)
-		# np.save(file_name + 'outputs', self.outputs)    
+		  
 		torch.save(self.critic.state_dict(), root_path + "W_critic")
 		torch.save(self.critic_optimizer.state_dict(), root_path + "W_critic_optimizer")
 		
@@ -223,15 +214,10 @@ class Agent(object):
 
 	def load_weights(self, root_path):
 		self.critic.load_state_dict(torch.load(root_path + "W_critic"))
-		# self.critic_optimizer.load_state_dict(torch.load(root_path + "_critic_optimizer"))
 		self.critic_target = copy.deepcopy(self.critic)
-		# self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=3e-3)
 		self.critic_optimizer.load_state_dict(torch.load(root_path + "W_critic_optimizer"))
-		# self.critic_target = copy.deepcopy(self.critic)
 
-		# self.actor.load_state_dict(torch.load(root_path + "_actor"))
 		self.actor.load_state_dict(torch.load(root_path + "W_actor"))
-		# self.actor_optimizer = torch.optim.Adam(self.actor.parameters(), lr=3e-3)
 		self.actor_optimizer.load_state_dict(torch.load(root_path + "W_actor_optimizer"))
 		self.actor_target = copy.deepcopy(self.actor)
 		
