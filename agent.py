@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
+from GROUP_030 import agent
 
 device = torch.device("cuda:0")
 class ReplayBuffer(object):
@@ -136,7 +137,7 @@ class Agent(object):
 		self.critic = Critic(env_specs).to(device)
 		self.critic_target = copy.deepcopy(self.critic)
 		self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), weight_decay=3e-4)
-    
+    		self.load_weights(agent.__file__.replace('agent.py',''))
 		self.discount = discount
 		self.tau = tau
 		self.start_timesteps = 0
