@@ -14,13 +14,13 @@ class ReplayBuffer(object):
 	def __init__(self, state_dim, action_dim, max_size=int(1e6)):
 		self.max_size = max_size
 		self.ptr  	  = 0
-		self.size     = 0
+		self.size	 = 0
 
 		self.curr_obs = np.zeros((max_size, state_dim ))
 		self.action	  = np.zeros((max_size, action_dim))
-		self.reward   = np.zeros((max_size, 1         ))
+		self.reward   = np.zeros((max_size, 1		 ))
 		self.next_obs = np.zeros((max_size, state_dim ))
-		self.done     = np.zeros((max_size, 1         ))
+		self.done	 = np.zeros((max_size, 1		 ))
 
 		self.device   = torch.device("cuda:0")
 
@@ -29,7 +29,7 @@ class ReplayBuffer(object):
 		self.action[self.ptr]   = action
 		self.reward[self.ptr]   = reward
 		self.next_obs[self.ptr] = next_obs
-		self.done[self.ptr]     = float(done)
+		self.done[self.ptr]	 = float(done)
 
 		
 		self.ptr  = (self.ptr + 1) % self.max_size
@@ -44,7 +44,7 @@ class ReplayBuffer(object):
 			torch.FloatTensor(self.action[ind]  ).to(self.device),
 			torch.FloatTensor(self.reward[ind]  ).to(self.device),
 			torch.FloatTensor(self.next_obs[ind]).to(self.device),
-			torch.FloatTensor(self.done[ind]    ).to(self.device)
+			torch.FloatTensor(self.done[ind]	).to(self.device)
 		)
 
 
@@ -77,12 +77,12 @@ class Critic(nn.Module):
 		super(Critic, self).__init__()
 
 		self.l1 = nn.Linear(env_specs['observation_space'].shape[0] + \
-            env_specs['action_space'].shape[0], neurons)
+			env_specs['action_space'].shape[0], neurons)
 		self.l2 = nn.Linear(neurons , neurons)
 		self.l3 = nn.Linear(neurons, 1)
 
 		self.l4 = nn.Linear(env_specs['observation_space'].shape[0] + \
-            env_specs['action_space'].shape[0], neurons)
+			env_specs['action_space'].shape[0], neurons)
 		self.l5 = nn.Linear(neurons , neurons)
 		self.l6 = nn.Linear(neurons, 1)
 
@@ -135,7 +135,7 @@ class Agent(object):
 		self.critic = Critic(env_specs).to(device)
 		self.critic_target = copy.deepcopy(self.critic)
 		self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), weight_decay=3e-4)
-    		self.load_weights(agent.__file__.replace('agent.py',''))
+		self.load_weights(agent.__file__.replace('agent.py',''))
 		self.discount = discount
 		self.tau = tau
 		self.start_timesteps = 0
