@@ -143,10 +143,10 @@ class Agent(object):
 		self.noise_clip = noise_clip
 		self.policy_freq = policy_freq
 		self.max_action = float(env_specs['action_space'].high[0])
-		self.start_timesteps = int(2e3)
+		self.start_timesteps = int(3e3)
 		self.log_freq = int(1e3)
 		self.noise_clip = noise_clip
-		
+		self.num_Updates = 5
 	
 	def act(self, curr_obs, mode='eval'):
 			
@@ -168,46 +168,47 @@ class Agent(object):
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
 		self.timestep = timestep
 		self.replay_buffer.add(curr_obs, action, reward, next_obs, done) # adding the observation to the buffer
-		_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size) # sampling the buffer
+		for _ in range(self.num_Updates):
+			_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size) # sampling the buffer
 
-		with torch.no_grad():
-			# Select action according to policy and add clipped noise
-			noise = (
-				torch.randn_like(_action) * self.policy_noise
-			).clamp(-self.noise_clip, self.noise_clip)
-			
-			next_action = (
-				self.actor_target(_next_obs) + noise
-			).clamp(-self.max_action, self.max_action)
+			with torch.no_grad():
+				# Select action according to policy and add clipped noise
+				noise = (
+					torch.randn_like(_action) * self.policy_noise
+				).clamp(-self.noise_clip, self.noise_clip)
 
-			# Compute the target Q value
-			target_Q1, target_Q2 = self.critic_target(_next_obs, next_action)
-			target_Q = torch.min(target_Q1, target_Q2)
-			target_Q = _reward + (1-_done) * self.discount * target_Q
+				next_action = (
+					self.actor_target(_next_obs) + noise
+				).clamp(-self.max_action, self.max_action)
 
-		current_Q1, current_Q2 = self.critic(_curr_obs, _action)
-		critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
+				# Compute the target Q value
+				target_Q1, target_Q2 = self.critic_target(_next_obs, next_action)
+				target_Q = torch.min(target_Q1, target_Q2)
+				target_Q = _reward + (1-_done) * self.discount * target_Q
 
-		self.critic_optimizer.zero_grad()
-		critic_loss.backward()
-		self.critic_optimizer.step()
+			current_Q1, current_Q2 = self.critic(_curr_obs, _action)
+			critic_loss = F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q)
 
-		if timestep % self.policy_freq == 0:
+			self.critic_optimizer.zero_grad()
+			critic_loss.backward()
+			self.critic_optimizer.step()
 
-			# Compute actor losse
-			actor_loss = -self.critic.Q1(_curr_obs, self.actor(_curr_obs)).mean()
-			
-			# Optimize the actor 
-			self.actor_optimizer.zero_grad()
-			actor_loss.backward()
-			self.actor_optimizer.step()
+			if timestep % self.policy_freq == 0:
 
-			# Update the frozen target models
-			for param, target_param in zip(self.critic.parameters(), self.critic_target.parameters()):
-				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+				# Compute actor losse
+				actor_loss = -self.critic.Q1(_curr_obs, self.actor(_curr_obs)).mean()
 
-			for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
-				target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+				# Optimize the actor 
+				self.actor_optimizer.zero_grad()
+				actor_loss.backward()
+				self.actor_optimizer.step()
+
+				# Update the frozen target models
+				for param, target_param in zip(self.critic.parameters(), self.critic_target.parameters()):
+					target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
+
+				for param, target_param in zip(self.actor.parameters(), self.actor_target.parameters()):
+					target_param.data.copy_(self.tau * param.data + (1 - self.tau) * target_param.data)
 
 
 
