@@ -155,13 +155,11 @@ class Agent(object):
 			
 		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
 		action = self.actor(curr_obs).cpu().data.numpy().flatten()
-		if mode=='eval':
+		if mode in ['eval', 'train']:
 			return action
-		if mode=='train' and self.timestep<self.start_timesteps:
-			return self.act_space.sample()
 			
 
-		if mode=='train':
+		if mode=='Train':
 			self.expl_noise = 0.4*(1-np.tanh(self.timestep/5e4))
 			noise = (np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
 					   ).clip(-self.noise_clip, self.noise_clip)
@@ -177,7 +175,7 @@ class Agent(object):
 			__done = False
 			__curr_obs = self.env.reset()
 			while not __done:	
-				__action = self.act(__curr_obs, mode='train')
+				__action = self.act(__curr_obs, mode='Train')
 				__next_obs, __reward, __done, _ = self.env.step(__action)
 				self.replay_buffer.add(__curr_obs, __action, __reward, __next_obs, __done) # adding the observation to the buffer
 				__curr_obs = __next_obs
