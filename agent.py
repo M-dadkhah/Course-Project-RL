@@ -143,17 +143,26 @@ class Agent(object):
 		self.noise_clip = noise_clip
 		self.policy_freq = policy_freq
 		self.max_action = float(env_specs['action_space'].high[0])
-		self.start_timesteps = int(5e3)
+		self.start_timesteps = int(2e3)
 		self.log_freq = int(1e3)
+		self.noise_clip = noise_clip
 		
 	
 	def act(self, curr_obs, mode='eval'):
-
 			
 		curr_obs = torch.FloatTensor(curr_obs.reshape(1, -1)).to(device)
 		action = self.actor(curr_obs).cpu().data.numpy().flatten()
+		if mode=='eval':
+			return action
+		if mode=='train' and self.timestep<self.start_timesteps:
+			return self.act_space.sample()
+			
 
-
+		if mode=='train':
+			self.expl_noise = 0.4*(1-np.tanh(self.timestep/5e4))
+			noise = (np.random.normal(0, 1 * self.expl_noise, size=self.act_space.shape[0])
+					   ).clip(-self.noise_clip, self.noise_clip)
+			action = (action + noise).clip(-1, 1)
 		return action
 		
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
