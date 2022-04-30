@@ -3,6 +3,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
+from environments import JellyBeanEnv, MujocoEnv
+import gym
 
 device = torch.device("cuda:0")
 class ReplayBuffer(object):
@@ -143,10 +145,11 @@ class Agent(object):
 		self.noise_clip = noise_clip
 		self.policy_freq = policy_freq
 		self.max_action = float(env_specs['action_space'].high[0])
-		self.start_timesteps = int(3e3)
+		self.start_timesteps = int(5e3)
 		self.log_freq = int(1e3)
-		self.noise_clip = noise_clip
-		self.num_Updates = 5
+		self.env = MujocoEnv(gym.make('Hopper-v2'))
+		self.genEps = 2
+		self.num_Updates = 3
 	
 	def act(self, curr_obs, mode='eval'):
 			
@@ -168,9 +171,20 @@ class Agent(object):
 	def update(self, curr_obs, action, reward, next_obs, done, timestep, batch_size=int(2**8)):
 		self.timestep = timestep
 		self.replay_buffer.add(curr_obs, action, reward, next_obs, done) # adding the observation to the buffer
+		__timestep = 0
+		for _ in range(self.genEps):
+
+			__done = False
+			__curr_obs = self.env.reset()
+			while not __done:	
+				__action = self.act(__curr_obs, mode='train')
+				__next_obs, __reward, __done, _ = self.env.step(__action)
+				self.replay_buffer.add(__curr_obs, __action, __reward, __next_obs, __done) # adding the observation to the buffer
+				__curr_obs = __next_obs
+				__timestep += 1
+
 		for _ in range(self.num_Updates):
 			_curr_obs, _action, _reward, _next_obs, _done = self.replay_buffer.sample(batch_size) # sampling the buffer
-
 			with torch.no_grad():
 				# Select action according to policy and add clipped noise
 				noise = (
