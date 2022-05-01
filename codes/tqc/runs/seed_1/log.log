@@ -1,0 +1,9 @@
+timestep: 1, acc_reward: 88.60, std: 0.00
+timestep: 2, acc_reward: 64.53, std: 0.00
+timestep: 3, acc_reward: 187.02, std: 0.00
+timestep: 4, acc_reward: 178.10, std: 0.00
+timestep: 5, acc_reward: 182.12, std: 0.00
+timestep: 1, acc_reward: 88.60, std: 0.00
+timestep: 2, acc_reward: 64.53, std: 0.00
+timestep: 3, acc_reward: 187.02, std: 0.00
+timestep: 1, acc_reward: 88.60, std: 0.00timestep: 1, acc_reward: 88.60, std: 0.00timestep: 1, acc_reward: 88.60, std: 0.00timestep: 2, acc_reward: 64.53, std: 0.00timestep: 3, acc_reward: 187.02, std: 0.00timestep: 1, acc_reward: 55.78, std: 44.39timestep: 2, acc_reward: 113.85, std: 42.88timestep: 3, acc_reward: 198.79, std: 9.01timestep: 1, acc_reward: 55.78, std: 44.39timestep: 2, acc_reward: 113.85, std: 42.88timestep: 3, acc_reward: 198.79, std: 9.01timestep: 4, acc_reward: 238.99, std: 33.36timestep: 5, acc_reward: 265.90, std: 20.83timestep: 6, acc_reward: 211.18, std: 10.92timestep: 7, acc_reward: 257.87, std: 7.92timestep: 8, acc_reward: 280.19, std: 5.74timestep: 9, acc_reward: 266.27, std: 9.19timestep: 10, acc_reward: 305.79, std: 7.86timestep: 11, acc_reward: 296.64, std: 9.79timestep: 12, acc_reward: 346.40, std: 17.19timestep: 13, acc_reward: 323.22, std: 16.92timestep: 14, acc_reward: 303.55, std: 13.34timestep: 15, acc_reward: 307.72, std: 7.31timestep: 1, acc_reward: 13.48, std: 5.58timestep: 2, acc_reward: 8.32, std: 1.98timestep: 3, acc_reward: 13.49, std: 0.57timestep: 4, acc_reward: 8.16, std: 2.83timestep: 5, acc_reward: 10.67, std: 6.46timestep: 6, acc_reward: 11.58, std: 8.70timestep: 7, acc_reward: 7.92, std: 1.42timestep: 8, acc_reward: 9.69, std: 3.79timestep: 9, acc_reward: 6.74, std: 1.26timestep: 10, acc_reward: 15.07, std: 4.34

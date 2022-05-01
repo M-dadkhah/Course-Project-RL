@@ -1,0 +1,1256 @@
+Using cuda device
+
+---------------------------------
+0: Mean reward: 17.96 +/- 0.17
+1: Mean reward: 17.98 +/- 0.22
+2: Mean reward: 17.95 +/- 0.22
+3: Mean reward: 17.98 +/- 0.27
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 23.2     |
+|    ep_rew_mean     | 21.4     |
+| time/              |          |
+|    episodes        | 500      |
+|    fps             | 198      |
+|    time_elapsed    | 8        |
+|    total_timesteps | 11772    |
+| train/             |          |
+|    actor_loss      | -7.31    |
+|    critic_loss     | 0.104    |
+|    ent_coef        | 0.876    |
+|    ent_coef_loss   | -0.665   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 442      |
+---------------------------------
+4: Mean reward: 84.03 +/- 1.28
+5: Mean reward: 54.85 +/- 0.75
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 48.1     |
+|    ep_rew_mean     | 70.6     |
+| time/              |          |
+|    episodes        | 600      |
+|    fps             | 199      |
+|    time_elapsed    | 9        |
+|    total_timesteps | 16928    |
+| train/             |          |
+|    actor_loss      | -19.9    |
+|    critic_loss     | 0.281    |
+|    ent_coef        | 0.605    |
+|    ent_coef_loss   | -2.19    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 1731     |
+---------------------------------
+6: Mean reward: 47.92 +/- 1.49
+7: Mean reward: 163.35 +/- 2.30
+8: Mean reward: 215.99 +/- 1.93
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 56.4     |
+|    ep_rew_mean     | 110      |
+| time/              |          |
+|    episodes        | 700      |
+|    fps             | 200      |
+|    time_elapsed    | 3        |
+|    total_timesteps | 23272    |
+| train/             |          |
+|    actor_loss      | -33.7    |
+|    critic_loss     | 1.04     |
+|    ent_coef        | 0.392    |
+|    ent_coef_loss   | -3.26    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 3317     |
+---------------------------------
+9: Mean reward: 244.05 +/- 1.02
+10: Mean reward: 297.15 +/- 1.27
+11: Mean reward: 321.03 +/- 1.63
+12: Mean reward: 313.19 +/- 1.30
+13: Mean reward: 340.88 +/- 1.58
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 130      |
+|    ep_rew_mean     | 291      |
+| time/              |          |
+|    episodes        | 800      |
+|    fps             | 199      |
+|    time_elapsed    | 11       |
+|    total_timesteps | 37360    |
+| train/             |          |
+|    actor_loss      | -58.2    |
+|    critic_loss     | 0.899    |
+|    ent_coef        | 0.152    |
+|    ent_coef_loss   | -5.06    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 6839     |
+---------------------------------
+14: Mean reward: 328.05 +/- 1.77
+15: Mean reward: 341.66 +/- 0.99
+16: Mean reward: 343.79 +/- 1.59
+17: Mean reward: 341.04 +/- 1.14
+18: Mean reward: 320.38 +/- 1.57
+19: Mean reward: 238.30 +/- 1.94
+20: Mean reward: 278.74 +/- 0.62
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 138      |
+|    ep_rew_mean     | 316      |
+| time/              |          |
+|    episodes        | 900      |
+|    fps             | 201      |
+|    time_elapsed    | 2        |
+|    total_timesteps | 52988    |
+| train/             |          |
+|    actor_loss      | -77.8    |
+|    critic_loss     | 0.835    |
+|    ent_coef        | 0.056    |
+|    ent_coef_loss   | -3.28    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 10746    |
+---------------------------------
+21: Mean reward: 135.54 +/- 1.81
+22: Mean reward: 209.65 +/- 2.92
+23: Mean reward: 273.62 +/- 23.74
+24: Mean reward: 212.40 +/- 2.36
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 114      |
+|    ep_rew_mean     | 239      |
+| time/              |          |
+|    episodes        | 1000     |
+|    fps             | 201      |
+|    time_elapsed    | 12       |
+|    total_timesteps | 64976    |
+| train/             |          |
+|    actor_loss      | -91.7    |
+|    critic_loss     | 0.792    |
+|    ent_coef        | 0.0333   |
+|    ent_coef_loss   | -0.0504  |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 13743    |
+---------------------------------
+25: Mean reward: 248.05 +/- 1.14
+26: Mean reward: 237.31 +/- 2.74
+27: Mean reward: 162.88 +/- 1.43
+28: Mean reward: 163.33 +/- 11.97
+29: Mean reward: 262.76 +/- 1.64
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 97.1     |
+|    ep_rew_mean     | 214      |
+| time/              |          |
+|    episodes        | 1100     |
+|    fps             | 199      |
+|    time_elapsed    | 2        |
+|    total_timesteps | 75420    |
+| train/             |          |
+|    actor_loss      | -96      |
+|    critic_loss     | 1.25     |
+|    ent_coef        | 0.0399   |
+|    ent_coef_loss   | 0.505    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 16354    |
+---------------------------------
+30: Mean reward: 287.39 +/- 0.82
+31: Mean reward: 294.24 +/- 1.47
+32: Mean reward: 178.35 +/- 130.11
+33: Mean reward: 258.60 +/- 3.87
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 109      |
+|    ep_rew_mean     | 274      |
+| time/              |          |
+|    episodes        | 1200     |
+|    fps             | 201      |
+|    time_elapsed    | 10       |
+|    total_timesteps | 87156    |
+| train/             |          |
+|    actor_loss      | -104     |
+|    critic_loss     | 1.26     |
+|    ent_coef        | 0.0571   |
+|    ent_coef_loss   | 0.993    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 19288    |
+---------------------------------
+34: Mean reward: 230.95 +/- 2.41
+35: Mean reward: 279.78 +/- 6.99
+36: Mean reward: 272.77 +/- 13.38
+37: Mean reward: 267.16 +/- 2.46
+38: Mean reward: 240.97 +/- 2.02
+39: Mean reward: 289.38 +/- 1.61
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 118      |
+|    ep_rew_mean     | 286      |
+| time/              |          |
+|    episodes        | 1300     |
+|    fps             | 199      |
+|    time_elapsed    | 2        |
+|    total_timesteps | 100536   |
+| train/             |          |
+|    actor_loss      | -107     |
+|    critic_loss     | 1.15     |
+|    ent_coef        | 0.0538   |
+|    ent_coef_loss   | -0.927   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 22633    |
+---------------------------------
+40: Mean reward: 318.61 +/- 1.45
+41: Mean reward: 318.39 +/- 1.70
+42: Mean reward: 328.19 +/- 1.07
+43: Mean reward: 330.38 +/- 1.10
+44: Mean reward: 342.16 +/- 1.06
+45: Mean reward: 353.54 +/- 1.21
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 143      |
+|    ep_rew_mean     | 332      |
+| time/              |          |
+|    episodes        | 1400     |
+|    fps             | 200      |
+|    time_elapsed    | 6        |
+|    total_timesteps | 116308   |
+| train/             |          |
+|    actor_loss      | -111     |
+|    critic_loss     | 0.893    |
+|    ent_coef        | 0.053    |
+|    ent_coef_loss   | 1.27     |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 26576    |
+---------------------------------
+46: Mean reward: 366.25 +/- 1.11
+47: Mean reward: 370.16 +/- 1.67
+48: Mean reward: 370.23 +/- 2.36
+49: Mean reward: 1022.12 +/- 0.76
+50: Mean reward: 1032.16 +/- 0.52
+51: Mean reward: 1027.51 +/- 0.43
+52: Mean reward: 1021.64 +/- 0.50
+53: Mean reward: 374.21 +/- 2.55
+54: Mean reward: 349.39 +/- 3.25
+55: Mean reward: 350.77 +/- 1.68
+56: Mean reward: 328.91 +/- 0.51
+57: Mean reward: 301.88 +/- 0.88
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 169      |
+|    ep_rew_mean     | 349      |
+| time/              |          |
+|    episodes        | 1500     |
+|    fps             | 200      |
+|    time_elapsed    | 7        |
+|    total_timesteps | 146456   |
+| train/             |          |
+|    actor_loss      | -121     |
+|    critic_loss     | 0.619    |
+|    ent_coef        | 0.0441   |
+|    ent_coef_loss   | -0.743   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 34113    |
+---------------------------------
+58: Mean reward: 287.69 +/- 1.49
+59: Mean reward: 298.68 +/- 1.35
+60: Mean reward: 305.09 +/- 0.85
+61: Mean reward: 322.60 +/- 1.15
+62: Mean reward: 335.75 +/- 1.35
+63: Mean reward: 462.51 +/- 2.18
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 128      |
+|    ep_rew_mean     | 317      |
+| time/              |          |
+|    episodes        | 1600     |
+|    fps             | 190      |
+|    time_elapsed    | 2        |
+|    total_timesteps | 160568   |
+| train/             |          |
+|    actor_loss      | -119     |
+|    critic_loss     | 0.921    |
+|    ent_coef        | 0.0367   |
+|    ent_coef_loss   | 1.49     |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 37641    |
+---------------------------------
+64: Mean reward: 394.45 +/- 4.09
+65: Mean reward: 524.17 +/- 23.87
+66: Mean reward: 464.52 +/- 1.95
+67: Mean reward: 398.55 +/- 1.56
+68: Mean reward: 425.13 +/- 3.09
+69: Mean reward: 327.69 +/- 1.93
+70: Mean reward: 525.91 +/- 1.94
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 160      |
+|    ep_rew_mean     | 444      |
+| time/              |          |
+|    episodes        | 1700     |
+|    fps             | 200      |
+|    time_elapsed    | 7        |
+|    total_timesteps | 179056   |
+| train/             |          |
+|    actor_loss      | -130     |
+|    critic_loss     | 0.552    |
+|    ent_coef        | 0.0412   |
+|    ent_coef_loss   | -0.178   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 42263    |
+---------------------------------
+71: Mean reward: 479.32 +/- 3.67
+72: Mean reward: 554.16 +/- 2.64
+73: Mean reward: 507.94 +/- 1.23
+74: Mean reward: 495.70 +/- 2.25
+75: Mean reward: 535.44 +/- 2.46
+76: Mean reward: 523.38 +/- 3.99
+77: Mean reward: 341.15 +/- 2.63
+78: Mean reward: 509.24 +/- 8.89
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 183      |
+|    ep_rew_mean     | 493      |
+| time/              |          |
+|    episodes        | 1800     |
+|    fps             | 201      |
+|    time_elapsed    | 10       |
+|    total_timesteps | 199512   |
+| train/             |          |
+|    actor_loss      | -135     |
+|    critic_loss     | 0.55     |
+|    ent_coef        | 0.0454   |
+|    ent_coef_loss   | -0.0186  |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 47377    |
+---------------------------------
+79: Mean reward: 437.81 +/- 57.96
+80: Mean reward: 497.17 +/- 17.79
+81: Mean reward: 620.12 +/- 14.07
+82: Mean reward: 553.66 +/- 4.93
+83: Mean reward: 380.53 +/- 4.69
+84: Mean reward: 485.02 +/- 11.08
+85: Mean reward: 367.23 +/- 2.53
+86: Mean reward: 363.52 +/- 6.01
+87: Mean reward: 455.29 +/- 1.71
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 176      |
+|    ep_rew_mean     | 445      |
+| time/              |          |
+|    episodes        | 1900     |
+|    fps             | 200      |
+|    time_elapsed    | 4        |
+|    total_timesteps | 220864   |
+| train/             |          |
+|    actor_loss      | -137     |
+|    critic_loss     | 0.545    |
+|    ent_coef        | 0.0399   |
+|    ent_coef_loss   | -0.595   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 52715    |
+---------------------------------
+88: Mean reward: 636.07 +/- 42.26
+89: Mean reward: 650.56 +/- 17.93
+90: Mean reward: 770.30 +/- 42.28
+91: Mean reward: 670.15 +/- 5.41
+92: Mean reward: 634.22 +/- 6.57
+93: Mean reward: 656.64 +/- 3.23
+94: Mean reward: 597.72 +/- 3.67
+95: Mean reward: 618.53 +/- 6.32
+96: Mean reward: 631.52 +/- 3.11
+97: Mean reward: 664.10 +/- 6.17
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 216      |
+|    ep_rew_mean     | 632      |
+| time/              |          |
+|    episodes        | 2000     |
+|    fps             | 202      |
+|    time_elapsed    | 8        |
+|    total_timesteps | 246656   |
+| train/             |          |
+|    actor_loss      | -145     |
+|    critic_loss     | 0.606    |
+|    ent_coef        | 0.0356   |
+|    ent_coef_loss   | 0.662    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 59163    |
+---------------------------------
+98: Mean reward: 687.30 +/- 5.05
+99: Mean reward: 642.28 +/- 3.61
+100: Mean reward: 632.60 +/- 3.68
+101: Mean reward: 658.06 +/- 3.05
+102: Mean reward: 680.94 +/- 5.77
+103: Mean reward: 666.69 +/- 5.21
+104: Mean reward: 664.09 +/- 3.81
+105: Mean reward: 625.86 +/- 8.73
+106: Mean reward: 658.88 +/- 4.99
+107: Mean reward: 733.82 +/- 5.37
+108: Mean reward: 717.54 +/- 4.89
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 212      |
+|    ep_rew_mean     | 653      |
+| time/              |          |
+|    episodes        | 2100     |
+|    fps             | 199      |
+|    time_elapsed    | 4        |
+|    total_timesteps | 273452   |
+| train/             |          |
+|    actor_loss      | -150     |
+|    critic_loss     | 0.614    |
+|    ent_coef        | 0.0393   |
+|    ent_coef_loss   | 0.473    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 65862    |
+---------------------------------
+109: Mean reward: 755.06 +/- 2.63
+110: Mean reward: 738.83 +/- 3.81
+111: Mean reward: 709.77 +/- 4.40
+112: Mean reward: 747.07 +/- 6.88
+113: Mean reward: 742.89 +/- 5.01
+114: Mean reward: 1068.47 +/- 30.83
+115: Mean reward: 996.16 +/- 9.34
+116: Mean reward: 1216.05 +/- 8.11
+117: Mean reward: 894.43 +/- 12.35
+118: Mean reward: 1617.17 +/- 134.47
+119: Mean reward: 1055.31 +/- 89.28
+120: Mean reward: 622.79 +/- 73.59
+121: Mean reward: 1264.83 +/- 92.23
+122: Mean reward: 1454.55 +/- 98.56
+123: Mean reward: 1188.65 +/- 26.80
+124: Mean reward: 1268.98 +/- 35.92
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 278      |
+|    ep_rew_mean     | 871      |
+| time/              |          |
+|    episodes        | 2200     |
+|    fps             | 200      |
+|    time_elapsed    | 7        |
+|    total_timesteps | 313932   |
+| train/             |          |
+|    actor_loss      | -172     |
+|    critic_loss     | 0.722    |
+|    ent_coef        | 0.0425   |
+|    ent_coef_loss   | 0.221    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 75982    |
+---------------------------------
+125: Mean reward: 1373.94 +/- 63.68
+126: Mean reward: 1687.31 +/- 93.57
+127: Mean reward: 1530.24 +/- 47.54
+128: Mean reward: 972.47 +/- 32.42
+129: Mean reward: 1344.53 +/- 42.11
+130: Mean reward: 928.68 +/- 24.46
+131: Mean reward: 1171.28 +/- 27.07
+132: Mean reward: 1502.68 +/- 28.23
+133: Mean reward: 962.49 +/- 8.68
+134: Mean reward: 1237.68 +/- 70.04
+135: Mean reward: 1295.36 +/- 67.65
+136: Mean reward: 875.54 +/- 18.03
+137: Mean reward: 1140.56 +/- 74.77
+138: Mean reward: 973.29 +/- 7.11
+139: Mean reward: 831.45 +/- 13.43
+140: Mean reward: 891.42 +/- 21.49
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 286      |
+|    ep_rew_mean     | 924      |
+| time/              |          |
+|    episodes        | 2300     |
+|    fps             | 202      |
+|    time_elapsed    | 4        |
+|    total_timesteps | 353408   |
+| train/             |          |
+|    actor_loss      | -189     |
+|    critic_loss     | 0.504    |
+|    ent_coef        | 0.0476   |
+|    ent_coef_loss   | 0.871    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 85851    |
+---------------------------------
+141: Mean reward: 840.70 +/- 6.90
+142: Mean reward: 858.31 +/- 16.51
+143: Mean reward: 841.81 +/- 8.39
+144: Mean reward: 888.22 +/- 19.34
+145: Mean reward: 1711.02 +/- 373.80
+146: Mean reward: 876.64 +/- 7.82
+147: Mean reward: 1280.42 +/- 87.97
+148: Mean reward: 1515.29 +/- 26.43
+149: Mean reward: 1717.89 +/- 120.89
+150: Mean reward: 3000.14 +/- 44.22
+151: Mean reward: 1547.80 +/- 125.35
+152: Mean reward: 2931.04 +/- 171.21
+153: Mean reward: 2935.31 +/- 229.20
+154: Mean reward: 2953.20 +/- 211.36
+155: Mean reward: 2629.94 +/- 40.24
+156: Mean reward: 2683.87 +/- 26.28
+157: Mean reward: 2722.05 +/- 16.35
+158: Mean reward: 2671.09 +/- 190.65
+159: Mean reward: 2610.84 +/- 44.81
+160: Mean reward: 2496.12 +/- 10.45
+161: Mean reward: 2677.35 +/- 21.74
+162: Mean reward: 1734.79 +/- 70.47
+163: Mean reward: 2021.73 +/- 126.69
+164: Mean reward: 1667.63 +/- 145.91
+165: Mean reward: 1555.29 +/- 137.14
+166: Mean reward: 1442.40 +/- 31.08
+167: Mean reward: 1049.11 +/- 73.03
+168: Mean reward: 1012.45 +/- 18.01
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 344      |
+|    ep_rew_mean     | 1.1e+03  |
+| time/              |          |
+|    episodes        | 2400     |
+|    fps             | 202      |
+|    time_elapsed    | 11       |
+|    total_timesteps | 424864   |
+| train/             |          |
+|    actor_loss      | -202     |
+|    critic_loss     | 0.852    |
+|    ent_coef        | 0.0489   |
+|    ent_coef_loss   | 0.97     |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 103715   |
+---------------------------------
+169: Mean reward: 1010.92 +/- 12.87
+170: Mean reward: 909.15 +/- 4.53
+171: Mean reward: 925.42 +/- 3.99
+172: Mean reward: 954.68 +/- 16.44
+173: Mean reward: 884.54 +/- 7.36
+174: Mean reward: 938.09 +/- 10.30
+175: Mean reward: 910.74 +/- 2.28
+176: Mean reward: 960.29 +/- 6.81
+177: Mean reward: 1070.26 +/- 50.21
+178: Mean reward: 1593.43 +/- 318.08
+179: Mean reward: 1690.08 +/- 526.96
+180: Mean reward: 2150.84 +/- 759.43
+181: Mean reward: 2919.20 +/- 7.75
+182: Mean reward: 1398.24 +/- 791.80
+183: Mean reward: 879.21 +/- 9.06
+184: Mean reward: 2613.58 +/- 513.30
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 309      |
+|    ep_rew_mean     | 962      |
+| time/              |          |
+|    episodes        | 2500     |
+|    fps             | 201      |
+|    time_elapsed    | 6        |
+|    total_timesteps | 463780   |
+| train/             |          |
+|    actor_loss      | -213     |
+|    critic_loss     | 0.546    |
+|    ent_coef        | 0.0418   |
+|    ent_coef_loss   | -0.329   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 113444   |
+---------------------------------
+185: Mean reward: 1472.56 +/- 96.87
+186: Mean reward: 1879.59 +/- 682.01
+187: Mean reward: 1887.19 +/- 542.18
+188: Mean reward: 937.34 +/- 17.30
+189: Mean reward: 1003.61 +/- 53.31
+190: Mean reward: 2748.42 +/- 552.69
+191: Mean reward: 2688.80 +/- 567.29
+192: Mean reward: 1352.86 +/- 58.73
+193: Mean reward: 1184.17 +/- 97.98
+194: Mean reward: 1577.80 +/- 89.82
+195: Mean reward: 1781.91 +/- 641.14
+196: Mean reward: 1430.52 +/- 32.62
+197: Mean reward: 1404.30 +/- 53.17
+198: Mean reward: 1464.91 +/- 87.89
+199: Mean reward: 1285.27 +/- 119.67
+200: Mean reward: 2332.63 +/- 735.67
+201: Mean reward: 3048.81 +/- 9.14
+202: Mean reward: 3101.67 +/- 7.77
+203: Mean reward: 3104.80 +/- 3.33
+204: Mean reward: 3024.32 +/- 4.09
+205: Mean reward: 3056.90 +/- 2.77
+206: Mean reward: 2919.31 +/- 379.82
+207: Mean reward: 3057.09 +/- 3.13
+208: Mean reward: 3000.02 +/- 3.07
+209: Mean reward: 3045.81 +/- 3.70
+210: Mean reward: 3088.26 +/- 2.37
+211: Mean reward: 3115.57 +/- 15.76
+212: Mean reward: 3020.34 +/- 7.07
+213: Mean reward: 3040.59 +/- 3.61
+214: Mean reward: 3039.19 +/- 1.39
+215: Mean reward: 3022.48 +/- 3.13
+216: Mean reward: 2972.25 +/- 4.24
+217: Mean reward: 3041.25 +/- 4.23
+218: Mean reward: 3031.26 +/- 3.95
+219: Mean reward: 2973.79 +/- 146.19
+220: Mean reward: 2983.99 +/- 3.30
+221: Mean reward: 3019.10 +/- 27.64
+222: Mean reward: 1425.02 +/- 150.01
+223: Mean reward: 2835.68 +/- 373.53
+224: Mean reward: 1639.27 +/- 536.16
+225: Mean reward: 1291.86 +/- 113.51
+226: Mean reward: 2199.58 +/- 480.33
+227: Mean reward: 3051.48 +/- 139.35
+228: Mean reward: 3071.47 +/- 42.65
+229: Mean reward: 2464.92 +/- 428.13
+230: Mean reward: 3077.37 +/- 22.64
+231: Mean reward: 2921.45 +/- 473.33
+232: Mean reward: 3059.87 +/- 2.72
+233: Mean reward: 2985.51 +/- 352.84
+234: Mean reward: 3064.91 +/- 80.19
+235: Mean reward: 3147.31 +/- 9.35
+236: Mean reward: 3158.09 +/- 6.35
+237: Mean reward: 3110.59 +/- 3.88
+238: Mean reward: 3160.97 +/- 2.21
+239: Mean reward: 3137.59 +/- 4.98
+240: Mean reward: 1140.18 +/- 241.73
+241: Mean reward: 3141.18 +/- 2.62
+242: Mean reward: 1927.13 +/- 880.84
+243: Mean reward: 3135.64 +/- 7.19
+244: Mean reward: 2626.84 +/- 471.10
+245: Mean reward: 3183.94 +/- 4.10
+246: Mean reward: 3178.27 +/- 3.64
+247: Mean reward: 2944.13 +/- 445.37
+248: Mean reward: 2687.93 +/- 493.64
+249: Mean reward: 3153.48 +/- 17.46
+250: Mean reward: 2225.17 +/- 625.55
+251: Mean reward: 2547.60 +/- 728.61
+252: Mean reward: 2336.41 +/- 783.58
+253: Mean reward: 2792.77 +/- 325.57
+254: Mean reward: 2732.48 +/- 402.17
+255: Mean reward: 3111.76 +/- 31.59
+256: Mean reward: 3085.75 +/- 16.55
+257: Mean reward: 1817.64 +/- 221.76
+258: Mean reward: 2972.62 +/- 192.79
+259: Mean reward: 3076.80 +/- 23.96
+260: Mean reward: 3094.03 +/- 142.83
+261: Mean reward: 2935.04 +/- 332.65
+262: Mean reward: 2900.47 +/- 476.32
+263: Mean reward: 3074.92 +/- 21.43
+264: Mean reward: 3103.56 +/- 5.93
+265: Mean reward: 3095.62 +/- 99.83
+266: Mean reward: 3142.08 +/- 26.84
+267: Mean reward: 2679.07 +/- 437.30
+268: Mean reward: 2865.39 +/- 540.17
+269: Mean reward: 2441.47 +/- 768.11
+270: Mean reward: 1886.32 +/- 833.56
+271: Mean reward: 3139.43 +/- 21.74
+272: Mean reward: 1125.65 +/- 86.02
+273: Mean reward: 1760.17 +/- 473.85
+274: Mean reward: 1841.81 +/- 829.90
+275: Mean reward: 1018.84 +/- 12.15
+276: Mean reward: 2414.86 +/- 489.58
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 427      |
+|    ep_rew_mean     | 1.36e+03 |
+| time/              |          |
+|    episodes        | 2600     |
+|    fps             | 204      |
+|    time_elapsed    | 6        |
+|    total_timesteps | 693764   |
+| train/             |          |
+|    actor_loss      | -249     |
+|    critic_loss     | 0.371    |
+|    ent_coef        | 0.0305   |
+|    ent_coef_loss   | -0.224   |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 170940   |
+---------------------------------
+277: Mean reward: 2200.68 +/- 709.31
+278: Mean reward: 2316.08 +/- 719.10
+279: Mean reward: 2826.24 +/- 560.91
+280: Mean reward: 927.03 +/- 139.17
+281: Mean reward: 2662.12 +/- 788.96
+282: Mean reward: 3142.99 +/- 100.58
+283: Mean reward: 1728.87 +/- 753.20
+284: Mean reward: 3132.60 +/- 21.43
+285: Mean reward: 1667.75 +/- 173.02
+286: Mean reward: 3076.79 +/- 228.55
+287: Mean reward: 3166.62 +/- 14.98
+288: Mean reward: 3117.85 +/- 6.89
+289: Mean reward: 3130.80 +/- 8.72
+290: Mean reward: 3174.69 +/- 10.42
+291: Mean reward: 3147.99 +/- 7.29
+292: Mean reward: 3243.94 +/- 32.69
+293: Mean reward: 3114.17 +/- 4.77
+294: Mean reward: 3126.30 +/- 2.59
+295: Mean reward: 3095.56 +/- 11.53
+296: Mean reward: 3107.69 +/- 84.09
+297: Mean reward: 3152.20 +/- 12.20
+298: Mean reward: 3145.83 +/- 4.32
+299: Mean reward: 3134.91 +/- 5.96
+300: Mean reward: 3153.38 +/- 10.41
+301: Mean reward: 3113.92 +/- 2.79
+302: Mean reward: 3136.80 +/- 12.83
+303: Mean reward: 3129.59 +/- 4.53
+304: Mean reward: 3181.57 +/- 2.50
+305: Mean reward: 3101.96 +/- 3.17
+306: Mean reward: 3141.48 +/- 11.50
+307: Mean reward: 3146.30 +/- 5.62
+308: Mean reward: 3136.27 +/- 12.92
+309: Mean reward: 3131.99 +/- 3.04
+310: Mean reward: 3147.79 +/- 10.81
+311: Mean reward: 3165.52 +/- 4.04
+312: Mean reward: 3143.66 +/- 17.12
+313: Mean reward: 3139.97 +/- 3.31
+314: Mean reward: 3151.30 +/- 4.57
+315: Mean reward: 3170.89 +/- 2.42
+316: Mean reward: 3180.80 +/- 5.64
+317: Mean reward: 3148.39 +/- 4.27
+318: Mean reward: 3145.28 +/- 2.42
+319: Mean reward: 3159.77 +/- 2.60
+320: Mean reward: 3154.38 +/- 3.73
+321: Mean reward: 3160.37 +/- 2.85
+322: Mean reward: 3205.74 +/- 2.39
+323: Mean reward: 3191.23 +/- 3.03
+324: Mean reward: 3187.36 +/- 1.39
+325: Mean reward: 3185.47 +/- 2.37
+326: Mean reward: 3170.54 +/- 3.72
+327: Mean reward: 3176.46 +/- 3.29
+328: Mean reward: 3182.56 +/- 1.60
+329: Mean reward: 3171.00 +/- 4.48
+330: Mean reward: 3151.83 +/- 1.83
+331: Mean reward: 3159.06 +/- 4.52
+332: Mean reward: 3162.96 +/- 3.31
+333: Mean reward: 3143.31 +/- 3.57
+334: Mean reward: 3141.12 +/- 1.80
+335: Mean reward: 3115.27 +/- 5.85
+336: Mean reward: 3233.75 +/- 12.62
+337: Mean reward: 3181.57 +/- 3.71
+338: Mean reward: 3193.61 +/- 3.63
+339: Mean reward: 3193.70 +/- 3.23
+340: Mean reward: 3192.92 +/- 8.83
+341: Mean reward: 3217.16 +/- 4.96
+342: Mean reward: 3202.95 +/- 4.84
+343: Mean reward: 3209.95 +/- 4.66
+344: Mean reward: 3123.37 +/- 283.31
+345: Mean reward: 3192.75 +/- 9.81
+346: Mean reward: 3213.07 +/- 7.48
+347: Mean reward: 3210.38 +/- 4.47
+348: Mean reward: 3196.58 +/- 6.73
+349: Mean reward: 3178.77 +/- 14.83
+350: Mean reward: 3206.71 +/- 7.57
+351: Mean reward: 3212.27 +/- 5.33
+352: Mean reward: 3214.68 +/- 7.83
+353: Mean reward: 3194.95 +/- 5.41
+354: Mean reward: 3230.70 +/- 11.92
+355: Mean reward: 3210.86 +/- 3.99
+356: Mean reward: 3227.24 +/- 3.97
+357: Mean reward: 3198.80 +/- 7.92
+358: Mean reward: 3178.80 +/- 2.70
+359: Mean reward: 3173.61 +/- 8.95
+360: Mean reward: 3200.72 +/- 1.12
+361: Mean reward: 3216.69 +/- 2.25
+362: Mean reward: 3200.32 +/- 3.56
+363: Mean reward: 3201.12 +/- 4.26
+364: Mean reward: 3208.71 +/- 4.89
+365: Mean reward: 2976.14 +/- 455.92
+366: Mean reward: 3165.72 +/- 6.12
+367: Mean reward: 3179.48 +/- 2.70
+368: Mean reward: 3216.70 +/- 2.86
+369: Mean reward: 3207.66 +/- 10.37
+370: Mean reward: 3201.76 +/- 3.01
+371: Mean reward: 3210.85 +/- 3.02
+372: Mean reward: 3192.52 +/- 6.67
+373: Mean reward: 3208.78 +/- 4.47
+374: Mean reward: 3211.65 +/- 3.01
+375: Mean reward: 3228.74 +/- 3.97
+376: Mean reward: 3215.06 +/- 8.06
+377: Mean reward: 3219.24 +/- 5.68
+378: Mean reward: 3213.05 +/- 5.30
+379: Mean reward: 3248.94 +/- 4.90
+380: Mean reward: 3223.28 +/- 4.53
+381: Mean reward: 3230.70 +/- 4.97
+382: Mean reward: 3259.67 +/- 10.11
+383: Mean reward: 3227.37 +/- 4.26
+384: Mean reward: 2903.05 +/- 552.37
+385: Mean reward: 3240.17 +/- 13.28
+386: Mean reward: 977.32 +/- 18.91
+387: Mean reward: 2276.95 +/- 961.87
+388: Mean reward: 3230.56 +/- 3.64
+389: Mean reward: 3232.39 +/- 6.45
+390: Mean reward: 3186.34 +/- 5.06
+391: Mean reward: 3217.61 +/- 4.62
+392: Mean reward: 3225.33 +/- 4.01
+393: Mean reward: 3202.14 +/- 3.51
+394: Mean reward: 3219.95 +/- 3.37
+395: Mean reward: 2924.66 +/- 608.22
+396: Mean reward: 1006.14 +/- 10.79
+397: Mean reward: 3219.39 +/- 4.63
+398: Mean reward: 3062.06 +/- 525.20
+399: Mean reward: 3069.87 +/- 516.31
+400: Mean reward: 2491.99 +/- 910.73
+401: Mean reward: 3219.00 +/- 4.82
+402: Mean reward: 3190.92 +/- 3.36
+403: Mean reward: 3200.39 +/- 3.35
+404: Mean reward: 3219.51 +/- 1.99
+405: Mean reward: 3032.26 +/- 619.74
+406: Mean reward: 3250.02 +/- 6.71
+407: Mean reward: 3249.38 +/- 5.54
+408: Mean reward: 3204.22 +/- 4.33
+409: Mean reward: 3222.51 +/- 1.98
+410: Mean reward: 3241.36 +/- 1.41
+411: Mean reward: 3225.74 +/- 1.72
+412: Mean reward: 3249.09 +/- 3.92
+413: Mean reward: 3218.39 +/- 4.02
+414: Mean reward: 3233.68 +/- 3.72
+415: Mean reward: 3219.96 +/- 2.82
+416: Mean reward: 3261.61 +/- 2.76
+417: Mean reward: 3233.25 +/- 2.78
+418: Mean reward: 954.66 +/- 33.87
+419: Mean reward: 3263.22 +/- 3.59
+420: Mean reward: 3251.64 +/- 2.93
+421: Mean reward: 959.29 +/- 29.06
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 357      |
+|    ep_rew_mean     | 1.19e+03 |
+| time/              |          |
+|    episodes        | 2700     |
+|    fps             | 202      |
+|    time_elapsed    | 7        |
+|    total_timesteps | 1056492  |
+| train/             |          |
+|    actor_loss      | -278     |
+|    critic_loss     | 0.223    |
+|    ent_coef        | 0.023    |
+|    ent_coef_loss   | -1.1     |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 261622   |
+---------------------------------
+422: Mean reward: 980.35 +/- 31.36
+423: Mean reward: 995.59 +/- 83.62
+424: Mean reward: 1374.43 +/- 665.43
+425: Mean reward: 2763.23 +/- 778.89
+426: Mean reward: 3244.42 +/- 4.17
+427: Mean reward: 3250.38 +/- 2.71
+428: Mean reward: 2421.15 +/- 1059.57
+429: Mean reward: 3273.29 +/- 4.72
+430: Mean reward: 3238.08 +/- 2.18
+431: Mean reward: 3258.88 +/- 4.30
+432: Mean reward: 3252.35 +/- 4.39
+433: Mean reward: 3252.45 +/- 2.45
+434: Mean reward: 3245.37 +/- 3.12
+435: Mean reward: 3254.88 +/- 1.63
+436: Mean reward: 3270.48 +/- 4.27
+437: Mean reward: 3274.64 +/- 2.71
+438: Mean reward: 3284.14 +/- 1.90
+439: Mean reward: 3298.31 +/- 5.00
+440: Mean reward: 3279.60 +/- 4.23
+441: Mean reward: 3279.58 +/- 6.50
+442: Mean reward: 3264.87 +/- 1.76
+443: Mean reward: 3268.20 +/- 4.85
+444: Mean reward: 3285.79 +/- 3.49
+445: Mean reward: 3283.97 +/- 4.62
+446: Mean reward: 3312.00 +/- 10.67
+447: Mean reward: 3270.62 +/- 6.98
+448: Mean reward: 3300.31 +/- 3.19
+449: Mean reward: 3302.09 +/- 5.80
+450: Mean reward: 3308.32 +/- 5.45
+451: Mean reward: 3307.47 +/- 8.90
+452: Mean reward: 3233.77 +/- 23.79
+453: Mean reward: 3296.08 +/- 4.46
+454: Mean reward: 3324.29 +/- 4.25
+455: Mean reward: 3321.53 +/- 5.44
+456: Mean reward: 3300.97 +/- 7.91
+457: Mean reward: 3344.37 +/- 2.09
+458: Mean reward: 3355.42 +/- 5.50
+459: Mean reward: 3360.74 +/- 4.02
+460: Mean reward: 3331.11 +/- 13.40
+461: Mean reward: 3384.68 +/- 4.47
+462: Mean reward: 3334.44 +/- 3.50
+463: Mean reward: 3362.22 +/- 5.93
+464: Mean reward: 3032.69 +/- 932.06
+465: Mean reward: 3363.01 +/- 8.35
+466: Mean reward: 3359.10 +/- 4.61
+467: Mean reward: 3353.10 +/- 4.70
+468: Mean reward: 3343.89 +/- 2.77
+469: Mean reward: 3334.34 +/- 3.15
+470: Mean reward: 3330.97 +/- 2.52
+471: Mean reward: 3329.70 +/- 3.41
+472: Mean reward: 3368.97 +/- 4.70
+473: Mean reward: 3354.03 +/- 5.35
+474: Mean reward: 3352.56 +/- 2.42
+475: Mean reward: 3303.34 +/- 3.99
+476: Mean reward: 3294.83 +/- 8.03
+477: Mean reward: 3282.45 +/- 4.60
+478: Mean reward: 3325.21 +/- 3.15
+479: Mean reward: 3320.74 +/- 2.91
+480: Mean reward: 3338.44 +/- 5.33
+481: Mean reward: 3270.07 +/- 13.25
+482: Mean reward: 3211.48 +/- 30.70
+483: Mean reward: 3314.66 +/- 6.39
+484: Mean reward: 3320.92 +/- 2.88
+485: Mean reward: 3302.66 +/- 3.35
+486: Mean reward: 3299.76 +/- 3.46
+487: Mean reward: 3297.67 +/- 4.06
+488: Mean reward: 3251.69 +/- 8.02
+489: Mean reward: 3308.12 +/- 9.87
+490: Mean reward: 3317.37 +/- 5.74
+491: Mean reward: 3286.14 +/- 4.61
+492: Mean reward: 3333.22 +/- 3.82
+493: Mean reward: 3357.85 +/- 9.16
+494: Mean reward: 3341.52 +/- 5.50
+495: Mean reward: 3363.16 +/- 4.11
+496: Mean reward: 3306.67 +/- 5.65
+497: Mean reward: 3343.51 +/- 3.11
+498: Mean reward: 3312.23 +/- 5.90
+499: Mean reward: 3330.10 +/- 6.10
+500: Mean reward: 3350.39 +/- 3.93
+501: Mean reward: 3340.33 +/- 5.26
+502: Mean reward: 3337.77 +/- 3.71
+503: Mean reward: 3362.98 +/- 3.51
+504: Mean reward: 3331.79 +/- 3.88
+505: Mean reward: 3372.72 +/- 6.47
+506: Mean reward: 3308.28 +/- 5.03
+507: Mean reward: 3342.00 +/- 3.96
+508: Mean reward: 3362.02 +/- 3.89
+509: Mean reward: 3376.04 +/- 10.29
+510: Mean reward: 3389.69 +/- 3.29
+511: Mean reward: 3398.19 +/- 3.40
+512: Mean reward: 3398.06 +/- 7.49
+513: Mean reward: 3382.39 +/- 5.57
+514: Mean reward: 3368.48 +/- 3.34
+515: Mean reward: 3372.60 +/- 4.99
+516: Mean reward: 3363.39 +/- 6.55
+517: Mean reward: 3388.28 +/- 4.91
+518: Mean reward: 3381.56 +/- 4.09
+519: Mean reward: 3383.54 +/- 3.06
+520: Mean reward: 3422.44 +/- 2.67
+521: Mean reward: 3421.96 +/- 9.38
+522: Mean reward: 3407.30 +/- 5.15
+523: Mean reward: 3400.78 +/- 2.82
+524: Mean reward: 3392.71 +/- 3.57
+525: Mean reward: 3419.34 +/- 3.14
+526: Mean reward: 3369.60 +/- 2.18
+527: Mean reward: 3376.43 +/- 5.36
+528: Mean reward: 3387.21 +/- 6.53
+529: Mean reward: -0.22 +/- 0.38
+530: Mean reward: 3403.99 +/- 3.74
+531: Mean reward: 3142.53 +/- 801.60
+532: Mean reward: 2759.95 +/- 1327.35
+533: Mean reward: 3412.55 +/- 3.42
+534: Mean reward: 3417.70 +/- 3.05
+535: Mean reward: 3391.26 +/- 4.21
+536: Mean reward: 3396.74 +/- 4.08
+537: Mean reward: 3421.42 +/- 2.32
+538: Mean reward: 3416.64 +/- 10.14
+539: Mean reward: 3402.48 +/- 15.43
+540: Mean reward: 3417.05 +/- 5.82
+541: Mean reward: 3392.34 +/- 8.89
+542: Mean reward: 3411.10 +/- 8.26
+543: Mean reward: 3431.19 +/- 8.71
+544: Mean reward: 3408.39 +/- 13.68
+545: Mean reward: 3446.78 +/- 20.06
+546: Mean reward: 3032.18 +/- 686.16
+547: Mean reward: 3432.29 +/- 24.53
+548: Mean reward: 3381.64 +/- 20.46
+549: Mean reward: 3331.21 +/- 175.92
+550: Mean reward: 2905.57 +/- 1013.70
+551: Mean reward: 2601.11 +/- 540.61
+552: Mean reward: 2853.58 +/- 612.93
+553: Mean reward: 2608.41 +/- 1027.31
+554: Mean reward: 2862.52 +/- 547.56
+555: Mean reward: 2143.76 +/- 766.52
+556: Mean reward: 3321.82 +/- 309.15
+557: Mean reward: 3018.98 +/- 847.65
+558: Mean reward: 2528.34 +/- 703.24
+559: Mean reward: 2473.59 +/- 938.01
+560: Mean reward: 2765.18 +/- 825.83
+561: Mean reward: 2464.50 +/- 981.19
+562: Mean reward: 3140.50 +/- 820.63
+563: Mean reward: 3421.00 +/- 2.73
+564: Mean reward: 3442.72 +/- 8.75
+565: Mean reward: 3449.82 +/- 11.77
+566: Mean reward: 3458.96 +/- 7.91
+567: Mean reward: 3438.48 +/- 5.64
+568: Mean reward: 975.14 +/- 38.07
+569: Mean reward: 3427.60 +/- 9.68
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 197      |
+|    ep_rew_mean     | 604      |
+| time/              |          |
+|    episodes        | 2800     |
+|    fps             | 200      |
+|    time_elapsed    | 7        |
+|    total_timesteps | 1426416  |
+| train/             |          |
+|    actor_loss      | -317     |
+|    critic_loss     | 0.128    |
+|    ent_coef        | 0.0127   |
+|    ent_coef_loss   | 0.39     |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 354103   |
+---------------------------------
+570: Mean reward: 842.56 +/- 221.10
+571: Mean reward: 2809.55 +/- 981.04
+572: Mean reward: 1238.52 +/- 733.19
+573: Mean reward: 3435.13 +/- 17.03
+574: Mean reward: 3424.62 +/- 2.44
+575: Mean reward: 3429.00 +/- 3.64
+576: Mean reward: 3430.09 +/- 3.17
+577: Mean reward: 3453.08 +/- 3.43
+578: Mean reward: 3445.14 +/- 2.40
+579: Mean reward: 3472.77 +/- 6.82
+580: Mean reward: 3468.85 +/- 4.20
+581: Mean reward: 3451.21 +/- 4.30
+582: Mean reward: 3459.04 +/- 3.10
+583: Mean reward: 3459.11 +/- 5.13
+584: Mean reward: 3467.51 +/- 3.24
+585: Mean reward: 3454.02 +/- 2.96
+586: Mean reward: 3446.77 +/- 5.42
+587: Mean reward: 3468.16 +/- 3.44
+588: Mean reward: 3463.90 +/- 5.76
+589: Mean reward: 2954.23 +/- 880.30
+590: Mean reward: 3446.88 +/- 3.92
+591: Mean reward: 3444.65 +/- 3.45
+592: Mean reward: 3477.32 +/- 11.34
+593: Mean reward: 3453.99 +/- 8.37
+594: Mean reward: 3277.78 +/- 547.52
+595: Mean reward: 2980.93 +/- 764.13
+596: Mean reward: 3484.96 +/- 7.55
+597: Mean reward: 3105.28 +/- 731.07
+598: Mean reward: 2101.23 +/- 1130.45
+599: Mean reward: 2013.74 +/- 690.34
+600: Mean reward: 3449.59 +/- 14.81
+601: Mean reward: 3104.39 +/- 456.37
+602: Mean reward: 3462.39 +/- 53.65
+603: Mean reward: 2931.23 +/- 725.29
+604: Mean reward: 2006.44 +/- 878.68
+605: Mean reward: 3467.19 +/- 13.38
+606: Mean reward: 1277.04 +/- 662.11
+607: Mean reward: 3382.02 +/- 124.94
+608: Mean reward: 2407.44 +/- 786.08
+609: Mean reward: 3477.08 +/- 15.99
+610: Mean reward: 2558.39 +/- 1109.60
+611: Mean reward: 3286.69 +/- 352.90
+612: Mean reward: 3456.44 +/- 14.82
+613: Mean reward: 3209.21 +/- 541.70
+614: Mean reward: 3451.67 +/- 14.01
+615: Mean reward: 3504.48 +/- 12.93
+616: Mean reward: 3478.27 +/- 15.59
+617: Mean reward: 3482.66 +/- 15.36
+618: Mean reward: 3493.81 +/- 21.92
+619: Mean reward: 3503.67 +/- 12.57
+620: Mean reward: 3505.90 +/- 13.82
+621: Mean reward: 3498.23 +/- 10.53
+622: Mean reward: 3509.67 +/- 2.84
+623: Mean reward: 3396.89 +/- 352.93
+624: Mean reward: 3519.78 +/- 3.79
+625: Mean reward: 3522.58 +/- 3.13
+626: Mean reward: 3493.72 +/- 3.06
+627: Mean reward: 3504.96 +/- 2.86
+628: Mean reward: 3510.52 +/- 4.80
+629: Mean reward: 3525.70 +/- 3.52
+630: Mean reward: 3522.85 +/- 3.85
+631: Mean reward: 3518.21 +/- 3.40
+632: Mean reward: 3526.78 +/- 3.41
+633: Mean reward: 3535.48 +/- 4.01
+634: Mean reward: 3516.97 +/- 3.80
+635: Mean reward: 3542.42 +/- 2.96
+636: Mean reward: 3528.46 +/- 3.15
+637: Mean reward: 3557.56 +/- 4.17
+638: Mean reward: 3547.25 +/- 2.89
+639: Mean reward: 3537.38 +/- 2.91
+640: Mean reward: 3563.47 +/- 2.81
+641: Mean reward: 3550.60 +/- 5.72
+642: Mean reward: 3549.12 +/- 3.27
+643: Mean reward: 3556.97 +/- 2.53
+644: Mean reward: 3548.31 +/- 3.90
+645: Mean reward: 3565.64 +/- 2.36
+646: Mean reward: 3534.18 +/- 2.93
+647: Mean reward: 3534.06 +/- 7.24
+648: Mean reward: 3542.98 +/- 2.71
+649: Mean reward: 3545.59 +/- 4.32
+650: Mean reward: 3543.32 +/- 3.85
+651: Mean reward: 3544.33 +/- 4.18
+652: Mean reward: 3531.58 +/- 4.24
+653: Mean reward: 3528.79 +/- 2.81
+654: Mean reward: 3559.49 +/- 3.29
+655: Mean reward: 3543.37 +/- 2.94
+656: Mean reward: 3558.28 +/- 2.67
+657: Mean reward: 3556.76 +/- 3.16
+658: Mean reward: 3562.85 +/- 3.24
+659: Mean reward: 3556.17 +/- 3.98
+660: Mean reward: 3513.46 +/- 3.45
+661: Mean reward: 3558.49 +/- 3.32
+662: Mean reward: 3554.04 +/- 5.44
+663: Mean reward: 3547.23 +/- 2.27
+664: Mean reward: 2506.95 +/- 1619.33
+665: Mean reward: 2840.73 +/- 1402.08
+666: Mean reward: 3541.78 +/- 2.78
+667: Mean reward: 3574.17 +/- 3.55
+668: Mean reward: 3546.23 +/- 3.19
+669: Mean reward: 3541.06 +/- 4.19
+670: Mean reward: 3586.73 +/- 3.69
+671: Mean reward: 3553.52 +/- 4.72
+672: Mean reward: 3577.22 +/- 4.96
+673: Mean reward: 3562.55 +/- 3.20
+674: Mean reward: 3574.97 +/- 4.44
+675: Mean reward: 3282.08 +/- 783.81
+676: Mean reward: 3539.08 +/- 2.82
+677: Mean reward: 3565.59 +/- 4.23
+678: Mean reward: 3557.06 +/- 4.84
+679: Mean reward: 3551.17 +/- 6.35
+680: Mean reward: 3575.40 +/- 5.03
+681: Mean reward: 3562.61 +/- 3.30
+682: Mean reward: 2675.27 +/- 778.48
+683: Mean reward: 3554.93 +/- 4.29
+684: Mean reward: 3561.15 +/- 4.56
+685: Mean reward: 3561.34 +/- 3.59
+686: Mean reward: 3560.90 +/- 4.62
+687: Mean reward: 3562.93 +/- 5.44
+688: Mean reward: 3566.72 +/- 3.53
+689: Mean reward: 3565.97 +/- 3.10
+690: Mean reward: 3558.55 +/- 5.01
+691: Mean reward: 3571.18 +/- 4.71
+692: Mean reward: 3573.50 +/- 4.81
+693: Mean reward: 3582.65 +/- 4.46
+694: Mean reward: 3581.93 +/- 3.40
+695: Mean reward: 2217.99 +/- 581.26
+696: Mean reward: 3025.37 +/- 504.55
+697: Mean reward: 2464.91 +/- 581.68
+698: Mean reward: 3432.03 +/- 257.25
+699: Mean reward: 2336.15 +/- 272.24
+700: Mean reward: 1909.34 +/- 206.61
+701: Mean reward: 1928.68 +/- 237.00
+702: Mean reward: 2008.29 +/- 472.49
+703: Mean reward: 3545.70 +/- 186.01
+704: Mean reward: 2753.64 +/- 377.97
+705: Mean reward: 2904.40 +/- 307.95
+706: Mean reward: 3593.91 +/- 4.52
+707: Mean reward: 3495.49 +/- 251.71
+708: Mean reward: 3583.09 +/- 4.91
+709: Mean reward: 3596.18 +/- 2.30
+710: Mean reward: 3601.32 +/- 3.44
+711: Mean reward: 3603.20 +/- 9.14
+712: Mean reward: 3591.90 +/- 3.79
+713: Mean reward: 3584.27 +/- 3.19
+714: Mean reward: 3575.40 +/- 5.09
+715: Mean reward: 2922.69 +/- 1018.03
+716: Mean reward: 3349.54 +/- 749.67
+717: Mean reward: 3168.75 +/- 823.95
+718: Mean reward: 3607.45 +/- 4.66
+719: Mean reward: 2355.29 +/- 1232.50
+720: Mean reward: 3597.12 +/- 1.97
+721: Mean reward: 3596.12 +/- 3.46
+722: Mean reward: 3430.66 +/- 451.78
+723: Mean reward: 3596.90 +/- 3.09
+724: Mean reward: 3533.44 +/- 134.25
+725: Mean reward: 3593.76 +/- 26.06
+726: Mean reward: 3592.38 +/- 5.77
+727: Mean reward: 3587.05 +/- 6.21
+728: Mean reward: 3595.40 +/- 7.28
+729: Mean reward: 3615.80 +/- 15.19
+730: Mean reward: 3612.09 +/- 3.35
+731: Mean reward: 3631.88 +/- 5.60
+732: Mean reward: 3612.99 +/- 14.97
+733: Mean reward: 3587.15 +/- 7.16
+734: Mean reward: 3572.15 +/- 5.83
+735: Mean reward: 3597.54 +/- 4.11
+736: Mean reward: 3420.42 +/- 452.78
+737: Mean reward: 3592.32 +/- 7.70
+738: Mean reward: 3601.91 +/- 13.10
+739: Mean reward: 3602.80 +/- 12.75
+740: Mean reward: 2809.11 +/- 990.75
+741: Mean reward: 3577.04 +/- 4.82
+742: Mean reward: 3599.51 +/- 3.60
+743: Mean reward: 3598.25 +/- 3.16
+744: Mean reward: 3589.58 +/- 2.63
+745: Mean reward: 3571.95 +/- 7.20
+746: Mean reward: 3410.24 +/- 633.67
+747: Mean reward: 3614.48 +/- 3.56
+748: Mean reward: 3287.26 +/- 542.14
+749: Mean reward: 3528.45 +/- 331.09
+750: Mean reward: 3612.79 +/- 12.65
+751: Mean reward: 2202.03 +/- 1377.84
+752: Mean reward: 3085.13 +/- 477.56
+753: Mean reward: 3107.09 +/- 893.71
+754: Mean reward: 2498.57 +/- 1079.62
+755: Mean reward: 3632.49 +/- 6.00
+756: Mean reward: 3578.32 +/- 157.94
+757: Mean reward: 3143.98 +/- 972.83
+758: Mean reward: 3645.03 +/- 4.17
+759: Mean reward: 2758.09 +/- 904.45
+760: Mean reward: 3609.80 +/- 31.35
+761: Mean reward: 3325.78 +/- 505.71
+762: Mean reward: 3096.10 +/- 660.10
+763: Mean reward: 819.85 +/- 151.68
+764: Mean reward: 895.77 +/- 160.39
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 388      |
+|    ep_rew_mean     | 1.31e+03 |
+| time/              |          |
+|    episodes        | 2900     |
+|    fps             | 202      |
+|    time_elapsed    | 9        |
+|    total_timesteps | 1914460  |
+| train/             |          |
+|    actor_loss      | -342     |
+|    critic_loss     | 0.163    |
+|    ent_coef        | 0.0117   |
+|    ent_coef_loss   | 0.201    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 476114   |
+---------------------------------
+765: Mean reward: 2155.99 +/- 1175.41
+766: Mean reward: 830.98 +/- 81.76
+767: Mean reward: 2743.66 +/- 1263.41
+768: Mean reward: 752.97 +/- 58.74
+769: Mean reward: 760.47 +/- 939.77
+770: Mean reward: 2988.08 +/- 685.65
+771: Mean reward: 3602.83 +/- 22.23
+772: Mean reward: 3148.09 +/- 808.10
+773: Mean reward: 3282.03 +/- 842.08
+774: Mean reward: 3445.45 +/- 382.77
+775: Mean reward: 2743.37 +/- 970.16
+776: Mean reward: 3605.32 +/- 20.49
+777: Mean reward: 436.62 +/- 1.92
+778: Mean reward: 2682.61 +/- 1204.84
+779: Mean reward: 3581.79 +/- 21.94
+780: Mean reward: 3593.92 +/- 12.04
+781: Mean reward: 3564.64 +/- 30.54
+782: Mean reward: 3566.70 +/- 110.22
+783: Mean reward: 3538.10 +/- 84.80
+784: Mean reward: 3584.49 +/- 10.70
+785: Mean reward: 3589.51 +/- 10.58
+786: Mean reward: 2996.01 +/- 713.96
+787: Mean reward: 3589.37 +/- 10.73
+788: Mean reward: 3603.73 +/- 11.94
+789: Mean reward: 3564.74 +/- 140.02
+790: Mean reward: 2876.69 +/- 678.34
+791: Mean reward: 2542.46 +/- 851.99
+792: Mean reward: 3436.60 +/- 374.24
+793: Mean reward: 2952.47 +/- 797.84
+794: Mean reward: 3632.40 +/- 3.32
+795: Mean reward: 2534.24 +/- 1650.48
+796: Mean reward: 10.52 +/- 0.90
+797: Mean reward: 3618.08 +/- 8.73
+798: Mean reward: 3612.91 +/- 8.42
+799: Mean reward: 5.63 +/- 0.04
+800: Mean reward: 3596.94 +/- 22.53
+801: Mean reward: 3430.61 +/- 523.37
+802: Mean reward: 3640.46 +/- 6.48
+803: Mean reward: 3618.18 +/- 3.06
+804: Mean reward: 3591.30 +/- 9.68
+805: Mean reward: 2846.72 +/- 1121.95
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 182      |
+|    ep_rew_mean     | 590      |
+| time/              |          |
+|    episodes        | 3000     |
+|    fps             | 202      |
+|    time_elapsed    | 7        |
+|    total_timesteps | 2016532  |
+| train/             |          |
+|    actor_loss      | -347     |
+|    critic_loss     | 0.109    |
+|    ent_coef        | 0.0105   |
+|    ent_coef_loss   | -1.82    |
+|    learning_rate   | 0.0003   |
+|    n_updates       | 501632   |
+---------------------------------
+806: Mean reward: 2429.19 +/- 1211.00
+807: Mean reward: 3598.89 +/- 6.16
+808: Mean reward: 3150.62 +/- 961.44
+809: Mean reward: 3607.05 +/- 6.68
+810: Mean reward: 2734.16 +/- 1230.27
