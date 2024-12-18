@@ -5,4 +5,4 @@ The root directory contains the report and the trained weights for actor and cri
 In the codes directory, you can find the algorithms we used.
 
 
-You can learn more about the project [here](https://drive.google.com/file/d/1_HRnxFz8nGjDY8iQQfsIZzlDXDk24DdP/view?usp=sharing).
+You can learn more about the project [here](https://drive.google.com/drive/folders/1K-h6Q7dZRGIQyuEEJgsTZD4OTW5iC5-k?usp=sharing).
