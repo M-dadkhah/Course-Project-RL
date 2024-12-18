@@ -3,3 +3,6 @@
 As part of this project, we were required to train a MuJoCo task (Hopper-v2).\
 The root directory contains the report and the trained weights for actor and critic neural networks.\
 In the codes directory, you can find the algorithms we used.
+
+
+You can learn more about the project [here](https://drive.google.com/file/d/1_HRnxFz8nGjDY8iQQfsIZzlDXDk24DdP/view?usp=sharing).
